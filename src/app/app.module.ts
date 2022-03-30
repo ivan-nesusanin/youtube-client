@@ -7,6 +7,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchItemComponent } from './search-result/search-item/search-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SortingComponent } from './search-result/sorting/sorting.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SortingComponent } from './search-result/sorting/sorting.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
