@@ -1,10 +1,7 @@
+@import "../../scss/mixins.scss";
+
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 80px;
-  background-color: #E5E5E5;
+  @include wrapper(80px);
 }
 
 .search-block {
