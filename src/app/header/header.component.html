@@ -5,11 +5,11 @@
     </div>
     <form class="search-form">
       <mat-form-field class="input-field">
-        <input placeholder="What are you want to find out?">
+        <input matInput placeholder="What are you want to find out?">
       </mat-form-field>
       <button mat-flat-button>search</button>
     </form>
-    <button class="button-icon">
+    <button class="button-icon" (click)="showSorting($event)">
       <mat-icon>tune</mat-icon>
     </button>
   </div>

@@ -9,6 +9,10 @@
   @include wrapper(50px);
 }
 
+.none {
+  display: none;
+}
+
 .sort-block {
   display: flex;
   align-items: center;
@@ -32,9 +36,9 @@
 
 .input {
   height: 13px;
-  width: 150px;
+  // width: 150px;
   margin-top: 5px;
-  background-color: #fff;
+  // background-color: #fff;
   text-indent: 5px;
 }
 

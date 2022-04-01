@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'youtube-client';
+  public showSortBlock = false;
+
+  showSorting(event: any): void {
+    if (event) {
+      this.showSortBlock = !this.showSortBlock;
+    }
+  }
 }

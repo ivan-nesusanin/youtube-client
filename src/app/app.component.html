@@ -1,2 +1,6 @@
-<app-header></app-header>
-<app-sorting></app-sorting>
+<app-header
+(eShowSorting)="showSorting($event)"
+></app-header>
+<app-sorting
+[showSortBlock]="showSortBlock"
+></app-sorting>

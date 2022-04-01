@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-const MaterialComponents = [
+const material = [
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
@@ -12,7 +12,7 @@ const MaterialComponents = [
 ];
 
 @NgModule({
-  imports: [MaterialComponents],
-  exports: [MaterialComponents],
+  imports: [material],
+  exports: [material],
 })
 export class MaterialModule { }
