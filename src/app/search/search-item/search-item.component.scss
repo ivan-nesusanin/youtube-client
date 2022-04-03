@@ -1,0 +1,31 @@
+@import "../../../scss/mixins.scss";
+
+.card {
+  max-width: 280px;
+  max-height: 330px;
+  text-align: center;
+  background-color: #E5E5E5;
+  border-bottom: solid 5px red;
+
+  img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  button {
+    @include button(30px, 120px);
+  }
+}
+
+.statistics {
+  display: flex;
+  column-gap: 17px;
+  margin: 20px 0;
+
+  span {
+    display: flex;
+    column-gap: 3px;
+    margin: 0;
+  }
+}
+

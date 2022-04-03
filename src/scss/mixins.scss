@@ -6,3 +6,11 @@
   height: $height;
   background-color: #E5E5E5;
 }
+
+@mixin button ($height, $width){
+  height: $height;
+  width: $width;
+  background-color: #2F80ED;
+  color: #fff;
+  line-height: 0;
+}

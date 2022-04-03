@@ -15,13 +15,7 @@
   margin-top: 5px;
 
   button {
-    height: 27px;
-    width: 80px;
-    margin-left: 2px;
-    background-color: #2F80ED;
-    color: #fff;
-    border: none;
-    line-height: 0;
+    @include button(27px, 80px);
   }
 }
 

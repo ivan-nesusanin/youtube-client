@@ -7,7 +7,7 @@ export interface ISearchItem {
 }
 
 export interface ISnippetItem {
-  publishedAt: Date,
+  publishedAt: string,
   channelId: string,
   title: string,
   description: string,
