@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ISearchResponse } from '../models/search-response.model';
+import { ISearchItem } from '../models/search-item.model';
 import { data } from '../../../assets/data';
 
 @Component({
@@ -8,6 +8,6 @@ import { data } from '../../../assets/data';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent {
-  public response: ISearchResponse = data.items;
+  public cards: ISearchItem[] = data.items;
 
 }

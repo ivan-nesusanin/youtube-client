@@ -1,5 +1,6 @@
 <section class="wrapper">
   <app-search-item
-
+    *ngFor="let card of cards"
+    [card]="card"
   ></app-search-item>
 </section>

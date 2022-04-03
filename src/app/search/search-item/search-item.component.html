@@ -1,25 +1,25 @@
 <mat-card class="card">
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="picture">
+  <img mat-card-image src="{{ card.snippet.thumbnails.medium.url }}" alt="picture">
   <mat-card-content>
     <div class="statistics">
       <span>
         <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
-        <p>1000</p>
+        <p>{{card.statistics.viewCount}}</p>
       </span>
       <span>
         <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-        <p>1000</p>
+        <p>{{card.statistics.likeCount}}</p>
       </span>
       <span>
         <mat-icon aria-hidden="false" aria-label="Example home icon">heart_broken</mat-icon>
-        <p>1000</p>
+        <p>{{card.statistics.dislikeCount}}</p>
       </span>
       <span>
         <mat-icon aria-hidden="false" aria-label="Example home icon">forum</mat-icon>
-        <p>1000</p>
+        <p>{{card.statistics.commentCount}}</p>
       </span>
     </div>
-    <mat-card-title>Shiba Inu</mat-card-title>
+    <h2>{{ card.snippet.title }}</h2>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button>more...</button>
