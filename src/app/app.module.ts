@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { SearchItemComponent } from './search/search-item/search-item.component';
 import { SearchResultComponent } from './search/search-result/search-result.component';
 import { SortingComponent } from './search/sorting/sorting.component';
+import { LabelColorDirective } from './directive/label-color.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SortingComponent } from './search/sorting/sorting.component';
     SearchResultComponent,
     SearchItemComponent,
     SortingComponent,
+    LabelColorDirective,
   ],
   imports: [
     BrowserModule,

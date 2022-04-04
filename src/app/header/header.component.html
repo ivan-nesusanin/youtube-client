@@ -3,12 +3,12 @@
     <div class="logo">
       <img src="../../assets/svg/logo.svg" alt="logo">
     </div>
-    <form class="search-form">
+    <div class="search-form">
       <mat-form-field class="input-field">
-        <input matInput placeholder="What are you want to find out?">
+        <input type="search" matInput placeholder="What are you want to find out?">
       </mat-form-field>
-      <button mat-raised-button>search</button>
-    </form>
+      <button mat-raised-button (click)="showSearch($event)">search</button>
+    </div>
     <button class="button-icon" (click)="showSorting($event)">
       <mat-icon>tune</mat-icon>
     </button>

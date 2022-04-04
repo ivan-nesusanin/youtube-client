@@ -8,9 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public showSortBlock = false;
 
+  public showSearchBlock = false;
+
   showSorting(event: any): void {
     if (event) {
       this.showSortBlock = !this.showSortBlock;
+    }
+  }
+
+  showSearch(event: any): void {
+    if (event) {
+      this.showSearchBlock = true;
     }
   }
 }

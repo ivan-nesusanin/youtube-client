@@ -1,8 +1,10 @@
 <app-header
   (eShowSorting)="showSorting($event)"
+  (eShowSearch)="showSearch($event)"
 ></app-header>
 <app-sorting
   [showSortBlock]="showSortBlock"
 ></app-sorting>
-<app-search-result>
-</app-search-result>
+<app-search-result
+  *ngIf="showSearchBlock===true"
+></app-search-result>

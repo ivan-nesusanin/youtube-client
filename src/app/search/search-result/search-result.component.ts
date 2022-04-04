@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ISearchItem } from '../models/search-item.model';
 import { data } from '../../../assets/data';
 
@@ -10,4 +10,5 @@ import { data } from '../../../assets/data';
 export class SearchResultComponent {
   public cards: ISearchItem[] = data.items;
 
+  @Input() showSearchBlock!: boolean;
 }
