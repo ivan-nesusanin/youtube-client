@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sorting',
@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 export class SortingComponent {
   @Input() showSortBlock!: boolean;
 
+  @Output() eSortByDate = new EventEmitter<Event>();
+
+  sortByDate(event: Event): void {
+    this.eSortByDate.emit(event);
+  }
 }

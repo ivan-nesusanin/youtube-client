@@ -9,6 +9,8 @@ import { SearchItemComponent } from './search/search-item/search-item.component'
 import { SearchResultComponent } from './search/search-result/search-result.component';
 import { SortingComponent } from './search/sorting/sorting.component';
 import { LabelColorDirective } from './directive/label-color.directive';
+import { FormsModule } from '@angular/forms';
+import { SortByDatePipePipe } from './pipes/sort-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { LabelColorDirective } from './directive/label-color.directive';
     SearchItemComponent,
     SortingComponent,
     LabelColorDirective,
+    SortByDatePipePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

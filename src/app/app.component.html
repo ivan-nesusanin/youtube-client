@@ -3,8 +3,10 @@
   (eShowSearch)="showSearch($event)"
 ></app-header>
 <app-sorting
+  (eSortByDate)="sortByDate($event)"
   [showSortBlock]="showSortBlock"
 ></app-sorting>
 <app-search-result
-  *ngIf="showSearchBlock===true"
+  *ngIf="showSearchBlock"
+  [click]="click"
 ></app-search-result>

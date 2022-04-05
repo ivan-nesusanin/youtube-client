@@ -10,15 +10,17 @@ export class AppComponent {
 
   public showSearchBlock = false;
 
+  public click: boolean | undefined;
+
   showSorting(event: any): void {
-    if (event) {
-      this.showSortBlock = !this.showSortBlock;
-    }
+    if (event) this.showSortBlock = !this.showSortBlock;
   }
 
   showSearch(event: any): void {
-    if (event) {
-      this.showSearchBlock = true;
-    }
+    if (event) this.showSearchBlock = true;
+  }
+
+  sortByDate(event: any): void {
+    if (event) this.click = !this.click;
   }
 }
