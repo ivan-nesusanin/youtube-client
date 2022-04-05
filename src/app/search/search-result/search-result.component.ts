@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ISearchItem } from '../models/search-item.model';
 import { data } from '../../../assets/data';
 
@@ -7,14 +7,12 @@ import { data } from '../../../assets/data';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
 })
-export class SearchResultComponent implements OnInit{
+export class SearchResultComponent {
   public cards: ISearchItem[] = data.items;
 
   @Input() showSearchBlock!: boolean;
 
-  @Input() click: boolean | undefined;
+  @Input() clickDate: boolean | undefined;
 
-  ngOnInit(): void {
-    console.log(this.click);
-  }
+  @Input() clickViews: boolean | undefined;
 }

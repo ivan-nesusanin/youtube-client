@@ -10,7 +10,8 @@ import { SearchResultComponent } from './search/search-result/search-result.comp
 import { SortingComponent } from './search/sorting/sorting.component';
 import { LabelColorDirective } from './directive/label-color.directive';
 import { FormsModule } from '@angular/forms';
-import { SortByDatePipePipe } from './pipes/sort-by-date.pipe';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SortByDatePipePipe } from './pipes/sort-by-date.pipe';
     SearchItemComponent,
     SortingComponent,
     LabelColorDirective,
-    SortByDatePipePipe,
+    SortByDatePipe,
+    SortByViewsPipe,
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,13 @@ export class SortingComponent {
 
   @Output() eSortByDate = new EventEmitter<Event>();
 
+  @Output() eSortByViews = new EventEmitter<Event>();
+
   sortByDate(event: Event): void {
     this.eSortByDate.emit(event);
+  }
+
+  sortByViews(event: Event): void {
+    this.eSortByViews.emit(event);
   }
 }

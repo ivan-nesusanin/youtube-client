@@ -4,9 +4,11 @@
 ></app-header>
 <app-sorting
   (eSortByDate)="sortByDate($event)"
+  (eSortByViews)="sortByViews($event)"
   [showSortBlock]="showSortBlock"
 ></app-sorting>
 <app-search-result
   *ngIf="showSearchBlock"
-  [click]="click"
+  [clickDate]="clickDate"
+  [clickViews]="clickViews"
 ></app-search-result>

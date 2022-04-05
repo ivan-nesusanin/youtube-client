@@ -10,7 +10,9 @@ export class AppComponent {
 
   public showSearchBlock = false;
 
-  public click: boolean | undefined;
+  public clickDate: boolean | undefined;
+
+  public clickViews: boolean | undefined;
 
   showSorting(event: any): void {
     if (event) this.showSortBlock = !this.showSortBlock;
@@ -21,6 +23,10 @@ export class AppComponent {
   }
 
   sortByDate(event: any): void {
-    if (event) this.click = !this.click;
+    if (event) this.clickDate = !this.clickDate;
+  }
+
+  sortByViews(event: any): void {
+    if (event) this.clickViews = !this.clickViews;
   }
 }

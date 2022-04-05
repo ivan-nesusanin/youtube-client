@@ -1,6 +1,6 @@
 <section class="wrapper">
   <app-search-item
-    *ngFor="let card of cards | sortByDatePipe:click"
+    *ngFor="let card of cards | sortByDate:clickDate | sortByViews:clickViews"
     [card]="card"
   ></app-search-item>
 </section>
