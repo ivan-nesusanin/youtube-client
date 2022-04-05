@@ -5,7 +5,7 @@
     <button mat-button (click)="sortByViews($event)">count of views</button>
     <p class="blue-text">by word or sentence</p>
     <mat-form-field>
-      <input class="input" matInput>
+      <input class="input" matInput [ngModel]="phrase" (ngModelChange)="getPhrase($event)">
     </mat-form-field>
   </div>
 </div>

@@ -5,10 +5,12 @@
 <app-sorting
   (eSortByDate)="sortByDate($event)"
   (eSortByViews)="sortByViews($event)"
+  (eGetPhrase)="getPhrase($event)"
   [showSortBlock]="showSortBlock"
 ></app-sorting>
 <app-search-result
   *ngIf="showSearchBlock"
   [clickDate]="clickDate"
   [clickViews]="clickViews"
+  [phrase]="phrase"
 ></app-search-result>

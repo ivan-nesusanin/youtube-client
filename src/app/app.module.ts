@@ -12,6 +12,7 @@ import { LabelColorDirective } from './directive/label-color.directive';
 import { FormsModule } from '@angular/forms';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
+import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
     LabelColorDirective,
     SortByDatePipe,
     SortByViewsPipe,
+    FilterByWordPipe,
   ],
   imports: [
     BrowserModule,

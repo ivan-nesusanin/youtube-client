@@ -14,6 +14,8 @@ export class AppComponent {
 
   public clickViews: boolean | undefined;
 
+  public phrase!: string;
+
   showSorting(event: any): void {
     if (event) this.showSortBlock = !this.showSortBlock;
   }
@@ -28,5 +30,9 @@ export class AppComponent {
 
   sortByViews(event: any): void {
     if (event) this.clickViews = !this.clickViews;
+  }
+
+  getPhrase(model: string) {
+    this.phrase = model;
   }
 }

@@ -12,11 +12,20 @@ export class SortingComponent {
 
   @Output() eSortByViews = new EventEmitter<Event>();
 
+  @Input() phrase = '';
+
+  @Output() eGetPhrase = new EventEmitter<string>();
+
   sortByDate(event: Event): void {
     this.eSortByDate.emit(event);
   }
 
   sortByViews(event: Event): void {
     this.eSortByViews.emit(event);
+  }
+
+  getPhrase(model: string): void {
+    this.phrase = model;
+    this.eGetPhrase.emit(model);
   }
 }

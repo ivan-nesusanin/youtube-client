@@ -15,4 +15,6 @@ export class SearchResultComponent {
   @Input() clickDate: boolean | undefined;
 
   @Input() clickViews: boolean | undefined;
+
+  @Input()  phrase!: string;
 }
