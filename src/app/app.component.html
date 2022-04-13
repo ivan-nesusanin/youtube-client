@@ -6,7 +6,7 @@
   (eSortByDate)="this.clickDate = !this.clickDate"
   (eSortByViews)="this.clickViews = !this.clickViews"
   (eGetPhrase)="getPhrase($event)"
-  *ngIf="showSortBlock"
+  [hidden]="showSortBlock"
 ></app-sorting>
 <app-search-result
   *ngIf="showSearchBlock"
