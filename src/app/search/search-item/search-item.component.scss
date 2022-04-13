@@ -2,7 +2,7 @@
 
 .card {
   max-width: 300px;
-  min-height: 380px;
+  min-height: 340px;
   text-align: center;
   background-color: #E5E5E5;
 
@@ -36,3 +36,13 @@
   height: 8px;
 }
 
+.title {
+  height: 65px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

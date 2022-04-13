@@ -16,22 +16,6 @@ export class AppComponent {
 
   public phrase!: string;
 
-  showSorting(event: any): void {
-    if (event) this.showSortBlock = !this.showSortBlock;
-  }
-
-  showSearch(event: any): void {
-    if (event) this.showSearchBlock = true;
-  }
-
-  sortByDate(event: any): void {
-    if (event) this.clickDate = !this.clickDate;
-  }
-
-  sortByViews(event: any): void {
-    if (event) this.clickViews = !this.clickViews;
-  }
-
   getPhrase(model: string) {
     this.phrase = model;
   }

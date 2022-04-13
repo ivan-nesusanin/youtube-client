@@ -4,24 +4,15 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
   selector: '[appLabelColor]',
 })
 export class LabelColorDirective implements OnInit {
-  @Input('appLabelColor')
-    baseData!: string;
-
-  private month = 2592000000;
-
-  private sevenDays = 604800000;
-
-  private currentDate: number = +(new Date());
+  @Input() appLabelColor = '';
 
   constructor(private elem: ElementRef, private render: Renderer2) {}
 
   ngOnInit() {
-    // console.log('Current date:' + this.currentDate)
-    // console.log('Base date:' + Date.parse(this.baseData))
-    // console.log('Difference:' + (this.currentDate - Date.parse(this.baseData)))
-    if ((this.currentDate - Date.parse(this.baseData)) < this.sevenDays) {
-      console.log(this.render.setStyle(this.elem.nativeElement, 'background-color', 'blue'));
-    } else if ((this.currentDate - Date.parse(this.baseData)) < this.month) {
+    const delta = Math.floor((new Date().getTime() - new Date(this.appLabelColor).getTime()) / (24 * 3600 * 1000));
+    if (delta < 7) {
+      this.render.setStyle(this.elem.nativeElement, 'background-color', 'blue');
+    } else if (delta < 30) {
       this.render.setStyle(this.elem.nativeElement, 'background-color', 'green');
     } else {
       this.render.setStyle(this.elem.nativeElement, 'background-color', 'red');

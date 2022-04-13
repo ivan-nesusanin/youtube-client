@@ -1,8 +1,8 @@
-<div *ngIf="showSortBlock" class="wrapper">
+<div ng-show="showSortBlock" class="wrapper">
   <div class="sort-block">
     <p class="gray-text">Sorting by:</p>
-    <button mat-button (click)="sortByDate($event)">date</button>
-    <button mat-button (click)="sortByViews($event)">count of views</button>
+    <button mat-button (click)="sortByDate()">date</button>
+    <button mat-button (click)="sortByViews()">count of views</button>
     <p class="blue-text">by word or sentence</p>
     <mat-form-field>
       <input class="input" matInput [ngModel]="phrase" (ngModelChange)="getPhrase($event)">

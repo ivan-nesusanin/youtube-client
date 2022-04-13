@@ -1,14 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ISearchItem } from '../models/search-item.model';
-// import { data } from 'src/assets/data';
 
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss'],
 })
-export class SearchItemComponent{
+export class SearchItemComponent implements OnInit{
 
-  @Input() card!: ISearchItem;
+  @Input()
+    card!: ISearchItem;
+
+  baseDate = '';
+
+  ngOnInit() {
+    this.baseDate = this.card.snippet.publishedAt;
+  }
 
 }

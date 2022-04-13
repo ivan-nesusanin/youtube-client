@@ -19,10 +19,10 @@
         <p>{{card.statistics.commentCount}}</p>
       </span>
     </div>
-    <h2>{{ card.snippet.title }}</h2>
+    <p class="title">{{ card.snippet.title }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button>more...</button>
   </mat-card-actions>
 </mat-card>
-<div appLabelColor="{{ card.snippet.publishedAt }}" class="label-color"></div>
+<div [appLabelColor]="baseDate" class="label-color"></div>

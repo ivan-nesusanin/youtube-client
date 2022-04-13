@@ -6,15 +6,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() eShowSorting = new EventEmitter<Event>();
+  @Output() eShowSorting = new EventEmitter<void>();
 
-  @Output() eShowSearch = new EventEmitter<Event>();
+  @Output() eShowSearch = new EventEmitter<void>();
 
-  showSorting(event: Event) {
-    this.eShowSorting.emit(event);
+  showSorting() {
+    this.eShowSorting.emit();
   }
 
-  showSearch(event: Event) {
-    this.eShowSearch.emit(event);
+  showSearch() {
+    this.eShowSearch.emit();
   }
 }

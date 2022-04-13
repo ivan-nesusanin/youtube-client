@@ -6,7 +6,7 @@ import { ISearchItem } from '../search/models/search-item.model';
 })
 export class SortByDatePipe implements PipeTransform {
 
-  transform(cards: ISearchItem[], clickDate: boolean | undefined = undefined): ISearchItem[] {
+  transform(cards: ISearchItem[], clickDate: boolean | undefined): ISearchItem[] {
     if (clickDate === true) {
       return cards.sort((a, b) => Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt));
     } else if (clickDate === false) {

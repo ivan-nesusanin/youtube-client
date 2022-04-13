@@ -6,11 +6,11 @@ import { ISearchItem } from '../search/models/search-item.model';
 })
 export class SortByViewsPipe implements PipeTransform {
 
-  transform(cards: ISearchItem[], clickViews: boolean | undefined = undefined): ISearchItem[] {
+  transform(cards: ISearchItem[], clickViews: boolean | undefined): ISearchItem[] {
     if (clickViews === true) {
-      return cards.sort((a, b) => Date.parse(a.statistics.viewCount) - Date.parse(b.statistics.viewCount));
+      return cards.sort((a, b) => +a.statistics.viewCount - (+b.statistics.viewCount));
     } else if (clickViews === false) {
-      return cards.sort((a, b) => Date.parse(b.statistics.viewCount) - Date.parse(a.statistics.viewCount));
+      return cards.sort((a, b) => +b.statistics.viewCount - (+a.statistics.viewCount));
     } else {
       return cards;
     }

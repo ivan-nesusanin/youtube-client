@@ -8,20 +8,20 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SortingComponent {
   @Input() showSortBlock!: boolean;
 
-  @Output() eSortByDate = new EventEmitter<Event>();
+  @Output() eSortByDate = new EventEmitter<void>();
 
-  @Output() eSortByViews = new EventEmitter<Event>();
+  @Output() eSortByViews = new EventEmitter<void>();
 
   @Input() phrase = '';
 
   @Output() eGetPhrase = new EventEmitter<string>();
 
-  sortByDate(event: Event): void {
-    this.eSortByDate.emit(event);
+  sortByDate(): void {
+    this.eSortByDate.emit();
   }
 
-  sortByViews(event: Event): void {
-    this.eSortByViews.emit(event);
+  sortByViews(): void {
+    this.eSortByViews.emit();
   }
 
   getPhrase(model: string): void {
