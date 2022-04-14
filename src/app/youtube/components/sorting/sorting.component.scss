@@ -1,4 +1,4 @@
-@import "../../../scss/mixins.scss";
+@import "../../../../scss/mixins.scss";
 
 @mixin tegP($color) {
   color: $color;
@@ -6,7 +6,7 @@
 }
 
 .wrapper {
-  @include wrapper(50px);
+  @include wrapper(50px, #E5E5E5);
 }
 
 .none {

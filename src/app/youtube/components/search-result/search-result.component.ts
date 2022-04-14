@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ISearchItem } from '../models/search-item.model';
-import { data } from '../../../assets/data';
+import { ISearchItem } from '../../models/search-item.model';
+import { data } from '../../../../assets/data';
 
 @Component({
   selector: 'app-search-result',
