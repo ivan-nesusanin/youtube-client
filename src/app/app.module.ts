@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
+import { RegisterFormComponent } from './auth/pages/register-form/register-form.component';
+import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
     SortByDatePipe,
     SortByViewsPipe,
     FilterByWordPipe,
+    RegisterFormComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,
