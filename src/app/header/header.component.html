@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="wrapper">
+  <div class="search-block">
+    <div class="logo">
+      <img src="../../assets/svg/logo.svg" alt="logo">
+    </div>
+    <div class="search-form">
+      <mat-form-field class="input-field">
+        <input type="search" matInput placeholder="What are you want to find out?">
+      </mat-form-field>
+      <button mat-raised-button (click)="showSearch()">search</button>
+    </div>
+    <button class="button-icon" (click)="showSorting()">
+      <mat-icon>tune</mat-icon>
+    </button>
+  </div>
+  <div class="user-block">
+    <p>Your Name</p>
+    <button class="button-icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</div>

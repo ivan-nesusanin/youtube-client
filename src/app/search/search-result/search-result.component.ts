@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ISearchItem } from '../models/search-item.model';
+import { data } from '../../../assets/data';
 
 @Component({
   selector: 'app-search-result',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent {
+  public cards: ISearchItem[] = data.items;
 
+  @Input() showSearchBlock!: boolean;
+
+  @Input() clickDate: boolean | undefined;
+
+  @Input() clickViews: boolean | undefined;
+
+  @Input()  phrase!: string;
 }
