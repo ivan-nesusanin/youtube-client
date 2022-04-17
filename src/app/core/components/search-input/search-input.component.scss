@@ -1,0 +1,14 @@
+@import "../../../../scss/mixins.scss";
+
+.search-form {
+
+  button {
+    @include button(27px, 80px);
+  }
+}
+
+.input-field {
+  min-width: 400px;
+  text-indent: 5px;
+}
+

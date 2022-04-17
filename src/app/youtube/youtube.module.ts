@@ -1,19 +1,46 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './pages/details/details.component';
-import { MaterialModule } from '../shared/material.module';
+import { SharedModule } from '../shared/shared.module';
 import { StatisticsComponent } from './components/statistics/statistics.component';
-
-
+import { SearchItemComponent } from './components/search-item/search-item.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SortingComponent } from './components/sorting/sorting.component';
+import { LabelColorDirective } from './directive/label-color.directive';
+import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
+import { MainComponent } from './pages/main/main.component';
+import { RouterModule } from '@angular/router';
+import { YoutubeRoutingModule } from './youtube-routing.module';
 
 @NgModule({
   declarations: [
     DetailsComponent,
     StatisticsComponent,
+    SearchItemComponent,
+    SearchResultComponent,
+    SortingComponent,
+    LabelColorDirective,
+    FilterByWordPipe,
+    SortByDatePipe,
+    SortByViewsPipe,
+    MainComponent,
   ],
   imports: [
-    CommonModule,
-    MaterialModule,
+    RouterModule,
+    SharedModule,
+    YoutubeRoutingModule,
+  ],
+  exports: [
+    DetailsComponent,
+    StatisticsComponent,
+    SearchItemComponent,
+    SearchResultComponent,
+    SortingComponent,
+    LabelColorDirective,
+    FilterByWordPipe,
+    SortByDatePipe,
+    SortByViewsPipe,
   ],
 })
 export class YoutubeModule { }

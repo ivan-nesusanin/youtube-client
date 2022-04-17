@@ -1,0 +1,25 @@
+@import "../../../../scss/mixins.scss";
+
+.wrapper {
+  @include wrapper(60vh, #fff);
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  // width: 80vw;
+  height: 60vh;
+  margin-top: 50px;
+  border: solid 1px red;
+
+  button {
+    @include button(32px, 32px);
+    font-size: 20px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+  }
+
+  img {
+    height: 100%;
+  }
+}

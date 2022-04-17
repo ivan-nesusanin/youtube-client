@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISearchItem } from '../../models/search-item.model';
+import { GetDataService } from '../../services/get-data.service';
 
 @Component({
   selector: 'app-search-item',
@@ -12,6 +13,8 @@ export class SearchItemComponent implements OnInit{
     card!: ISearchItem;
 
   baseDate = '';
+
+  constructor(public getDataService: GetDataService) { }
 
   ngOnInit() {
     this.baseDate = this.card.snippet.publishedAt;

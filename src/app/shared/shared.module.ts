@@ -4,6 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const material = [
   MatButtonModule,
@@ -14,7 +16,15 @@ const material = [
 ];
 
 @NgModule({
-  imports: [material],
-  exports: [material],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ...material,
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ...material,
+  ],
 })
-export class MaterialModule { }
+export class SharedModule { }

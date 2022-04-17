@@ -1,28 +1,16 @@
 <mat-card class="card">
   <img mat-card-image src="{{ card.snippet.thumbnails.medium.url }}" alt="picture">
   <mat-card-content>
-    <div class="statistics">
-      <span>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon>
-        <p>{{card.statistics.viewCount}}</p>
-      </span>
-      <span>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
-        <p>{{card.statistics.likeCount}}</p>
-      </span>
-      <span>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">heart_broken</mat-icon>
-        <p>{{card.statistics.dislikeCount}}</p>
-      </span>
-      <span>
-        <mat-icon aria-hidden="false" aria-label="Example home icon">forum</mat-icon>
-        <p>{{card.statistics.commentCount}}</p>
-      </span>
-    </div>
+    <app-statistics
+      [card]="card"
+    ></app-statistics>
     <p class="title">{{ card.snippet.title }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button>more...</button>
+    <button mat-raised-button
+      (click)="getDataService.getCardInfo(card.id)"
+      [routerLink]="['/detail', card.id]"
+    >more...</button>
   </mat-card-actions>
 </mat-card>
 <div [appLabelColor]="baseDate" class="label-color"></div>
