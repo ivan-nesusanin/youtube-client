@@ -8,9 +8,12 @@ export class AuthService {
 
   public login$ = new Subject<string>();
 
-  login(value: string): void {
+  public isAuth = false;
+
+  login(value: string): boolean {
     localStorage.setItem('login', value);
     localStorage.setItem('token', 'true');
     this.login$.next(value);
+    return this.isAuth = true;
   }
 }

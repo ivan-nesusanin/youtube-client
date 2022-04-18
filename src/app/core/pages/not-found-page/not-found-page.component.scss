@@ -1,7 +1,8 @@
 @import '../../../../scss/mixins.scss';
 
 .wrapper {
-  @include wrapper(80vh, #fff);
+  @include wrapper(#fff, center);
+  height: 80vh;
 
   div {
     display: flex;

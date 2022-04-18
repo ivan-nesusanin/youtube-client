@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SendEventService } from '@data/app/shared/services/send-event.service';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
 
@@ -16,7 +17,11 @@ export class DetailsComponent implements OnInit {
 
   public id = '';
 
-  constructor(private getDataService: GetDataService, private readonly route: ActivatedRoute) { }
+  constructor(
+    private getDataService: GetDataService,
+    private readonly route: ActivatedRoute,
+    public sendEventService: SendEventService,
+  ) { }
 
   ngOnInit(): void {
     this.cards = this.getDataService.cards;

@@ -7,6 +7,7 @@ import { SendEventService } from '@data/app/shared/services/send-event.service';
   styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent {
+  value = '';
 
   constructor(public sendEventService: SendEventService) { }
 }

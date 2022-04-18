@@ -1,6 +1,6 @@
 <section class="wrapper">
   <div class="container">
-    <button mat-raised-button routerLink="/main"><</button>
+    <button mat-raised-button (click)="sendEventService.changeSearchClickValue(true)" routerLink="/main"><<</button>
     <img src="{{ this.card!.snippet.thumbnails.standard.url }}" alt="poster">
     <mat-card class="card">
       <div>

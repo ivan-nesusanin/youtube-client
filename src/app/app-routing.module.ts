@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterFormComponent } from './auth/pages/register-form/register-form.component';
+import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 import { DetailsComponent } from './youtube/pages/details/details.component';
-import { MainComponent } from './youtube/pages/main/main.component';
 
 const routes: Routes = [
   {
     path: '', redirectTo: 'main', pathMatch: 'full',
   },
   {
-    path: 'main', component: MainComponent,
+    path: 'main',
+    canLoad: [AuthGuard],
+    loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
   },
   {
-    path: 'auth', component: RegisterFormComponent,
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: 'detail/:id', component: DetailsComponent,

@@ -21,7 +21,12 @@ export class MainComponent implements OnInit {
 
   public cards!: ISearchItem[];
 
-  constructor(private getDataService: GetDataService, public sendEventService: SendEventService) {}
+  public back!: boolean;
+
+  constructor(
+    private getDataService: GetDataService,
+    public sendEventService: SendEventService,
+  ) {}
 
   ngOnInit(): void {
     this.cards = this.getDataService.cards;
