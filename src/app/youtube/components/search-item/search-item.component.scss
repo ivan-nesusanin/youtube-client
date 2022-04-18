@@ -16,26 +16,6 @@
   }
 }
 
-.statistics {
-  display: flex;
-  column-gap: 17px;
-  justify-content: center;
-  padding: 15px 0;
-
-  span {
-    display: flex;
-    column-gap: 3px;
-
-    p {
-      margin: 0;
-    }
-  }
-}
-
-.label-color {
-  height: 8px;
-}
-
 .title {
   height: 65px;
   font-size: 20px;

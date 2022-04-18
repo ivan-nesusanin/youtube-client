@@ -7,5 +7,5 @@ import { ISearchItem } from '../../models/search-item.model';
   styleUrls: ['./statistics.component.scss'],
 })
 export class StatisticsComponent {
-  @Input() card!: ISearchItem;
+  @Input() card?: ISearchItem;
 }

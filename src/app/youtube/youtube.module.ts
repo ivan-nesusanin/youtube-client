@@ -12,6 +12,7 @@ import { SortByViewsPipe } from './pipes/sort-by-views.pipe';
 import { MainComponent } from './pages/main/main.component';
 import { RouterModule } from '@angular/router';
 import { YoutubeRoutingModule } from './youtube-routing.module';
+import { ColorLabelComponent } from './components/color-label/color-label.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     SortByDatePipe,
     SortByViewsPipe,
     MainComponent,
+    ColorLabelComponent,
   ],
   imports: [
     RouterModule,

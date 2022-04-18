@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
 
@@ -11,9 +12,19 @@ export class DetailsComponent implements OnInit {
 
   public card?: ISearchItem;
 
-  constructor(private getDataService: GetDataService) { }
+  public cards!: ISearchItem[];
+
+  public id = '';
+
+  constructor(private getDataService: GetDataService, private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getDataService.info$.subscribe(value => console.log(value));
+    this.cards = this.getDataService.cards;
+    this.getCardInfo();
+  }
+
+  getCardInfo(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.card = this.cards.find(item => item.id === this.id);
   }
 }

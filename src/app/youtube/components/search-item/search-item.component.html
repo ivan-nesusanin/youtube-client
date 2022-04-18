@@ -8,9 +8,10 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button
-      (click)="getDataService.getCardInfo(card.id)"
       [routerLink]="['/detail', card.id]"
     >more...</button>
   </mat-card-actions>
 </mat-card>
-<div [appLabelColor]="baseDate" class="label-color"></div>
+<app-color-label
+  [card]="card"
+></app-color-label>
