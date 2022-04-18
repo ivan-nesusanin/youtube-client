@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <div></div>
   <div class="search-block">
     <div class="logo">
       <img src="../../assets/svg/logo.svg" alt="logo">
@@ -10,10 +11,9 @@
 
   </div>
   <div class="user-block">
-    <p>Your Name</p>
+    <p>{{ name }}</p>
     <a href=""></a>
-    <button class="button-icon" [routerLink]="['/auth']">
-      <mat-icon>account_circle</mat-icon>
-    </button>
+    <mat-icon class="icon">account_circle</mat-icon>
+    <button mat-raised-button type="button" (click)="goToRegister()">{{ buttonName }}</button>
   </div>
 </div>

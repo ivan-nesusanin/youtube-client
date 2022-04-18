@@ -1,8 +1,7 @@
 @import "../../../../scss/mixins.scss";
 
 .wrapper {
-  @include wrapper(60vh, #fff);
-  // padding: 0 50px;
+  @include wrapper(#fff, center)
 }
 
 .container {
@@ -10,7 +9,7 @@
   justify-content: center;
   align-items: flex-start;
   height: 60vh;
-  margin-top: 100px;
+  margin-top: 50px;
 
   button {
     @include button(32px, 32px);

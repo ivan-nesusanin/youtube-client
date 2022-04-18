@@ -1,25 +1,22 @@
 @import "../../../../scss/mixins.scss";
 
 .wrapper {
-  @include wrapper(80px, #E5E5E5);
+  @include wrapper(#E5E5E5, space-around);
+  height: 80px;
 }
 
 .search-block {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  padding: 0 190px;
 }
 
-.button-icon {
+.icon {
   height: 25px;
   width: 25px;
-  padding: 0;
   background-color: #2F80ED;
   color: #fff;
   border-radius: 5px;
-  border: none;
-  cursor: pointer;
 }
 
 .user-block {
@@ -30,5 +27,9 @@
   p {
     margin: 0;
     color: #4F4F4F;
+  }
+
+  button {
+    @include button(25px, 80px);
   }
 }

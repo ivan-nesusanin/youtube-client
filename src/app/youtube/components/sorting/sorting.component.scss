@@ -6,7 +6,8 @@
 }
 
 .wrapper {
-  @include wrapper(50px, #E5E5E5);
+  @include wrapper(#E5E5E5, center);
+  height: 50px;
 }
 
 .none {

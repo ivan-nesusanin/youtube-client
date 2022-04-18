@@ -1,9 +1,8 @@
-@mixin wrapper($height, $color) {
+@mixin wrapper($color, $position) {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: $position;
   width: 100%;
-  height: $height;
   background-color: $color;
 }
 

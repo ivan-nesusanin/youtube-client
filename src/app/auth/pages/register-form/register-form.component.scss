@@ -1,7 +1,7 @@
 @import "../../../../scss/mixins.scss";
 
 .wrapper {
-  @include wrapper(60vh, #fff);
+  @include wrapper(#fff, center);
 }
 
 .form {
@@ -9,6 +9,7 @@
   flex-direction: column;
   min-width: 350px;
   min-height: 250px;
+  margin-top: 50px;
   padding: 20px;
   background-color: #F2F2F2;
 
