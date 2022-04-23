@@ -22,8 +22,6 @@ export class RegisterFormComponent implements OnInit {
   }
 
   submit(): void {
-    // localStorage.setItem('login', this.form.value.login);
-    // localStorage.setItem('token', 'true');
     this.authService.login(this.form.value.login);
     this.router.navigate(['/main']);
   }

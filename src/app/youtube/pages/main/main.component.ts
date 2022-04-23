@@ -21,19 +21,19 @@ export class MainComponent implements OnInit {
 
   public cards!: ISearchItem[];
 
-  public back!: boolean;
-
   constructor(
     private getDataService: GetDataService,
     public sendEventService: SendEventService,
   ) {}
 
   ngOnInit(): void {
-    this.cards = this.getDataService.cards;
 
     this.sendEventService.clickSearchValue$.subscribe((value) => this.showSearchBlock = value);
 
     this.sendEventService.clickSettingsValue$.subscribe((value) => this.showSortBlock = value);
+
+    // this.getDataService.getData().subscribe(res => console.log(res));
+
   }
 
   getPhrase(model: string) {

@@ -1,9 +1,15 @@
 export interface ISearchItem {
+  title: string,
   kind: string,
   etag: string,
-  id: string,
+  id: IId,
   snippet: ISnippetItem,
   statistics: IStatisticsItem
+}
+
+export interface IId {
+  kins: string,
+  videoId: string
 }
 
 export interface ISnippetItem {

@@ -24,12 +24,11 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cards = this.getDataService.cards;
     this.getCardInfo();
   }
 
   getCardInfo(): void {
     this.id = this.route.snapshot.params['id'];
-    this.card = this.cards.find(item => item.id === this.id);
+    // this.card = this.cards.find(item => item.id === this.id);
   }
 }

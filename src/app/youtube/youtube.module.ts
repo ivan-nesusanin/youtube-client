@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { DetailsComponent } from './pages/details/details.component';
 import { SharedModule } from '../shared/shared.module';
 import { StatisticsComponent } from './components/statistics/statistics.component';
@@ -13,6 +13,14 @@ import { MainComponent } from './pages/main/main.component';
 import { RouterModule } from '@angular/router';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { ColorLabelComponent } from './components/color-label/color-label.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { YoutubeInterceptor } from './interceptors/youtube.interceptor';
+
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: YoutubeInterceptor,
+  multi: true,
+};
 
 @NgModule({
   declarations: [
@@ -44,5 +52,6 @@ import { ColorLabelComponent } from './components/color-label/color-label.compon
     SortByDatePipe,
     SortByViewsPipe,
   ],
+  providers: [INTERCEPTOR_PROVIDER],
 })
 export class YoutubeModule { }
