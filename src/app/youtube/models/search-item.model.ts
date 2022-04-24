@@ -9,7 +9,8 @@ export interface ISearchItem {
 
 export interface IId {
   kins: string,
-  videoId: string
+  videoId: string,
+  // playlistId?: string,
 }
 
 export interface ISnippetItem {
@@ -48,7 +49,6 @@ export interface ILocalizedItem {
 export interface IStatisticsItem {
   viewCount: string,
   likeCount: string,
-  dislikeCount: string,
   favoriteCount: string,
   commentCount: string
 }

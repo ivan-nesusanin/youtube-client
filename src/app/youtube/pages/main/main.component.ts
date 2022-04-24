@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { SendEventService } from '@data/app/shared/services/send-event.service';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
@@ -8,10 +8,8 @@ import { GetDataService } from '../../services/get-data.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterContentChecked {
   public showSortBlock = true;
-
-  public showSearchBlock!: boolean;
 
   public clickDate: boolean | undefined;
 
@@ -27,13 +25,11 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.sendEventService.clickSearchValue$.subscribe((value) => this.showSearchBlock = value);
-
     this.sendEventService.clickSettingsValue$.subscribe((value) => this.showSortBlock = value);
+  }
 
-    // this.getDataService.getData().subscribe(res => console.log(res));
-
+  ngAfterContentChecked(): void {
+    this.cards = this.getDataService.searchVideo;
   }
 
   getPhrase(model: string) {

@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./sorting.component.scss'],
 })
 export class SortingComponent {
-  // @Input() showSortBlock!: boolean;
 
   @Output() eSortByDate = new EventEmitter<void>();
 
