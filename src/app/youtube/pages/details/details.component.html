@@ -1,7 +1,7 @@
 <section class="wrapper">
   <div class="container">
     <button mat-raised-button routerLink="/main"><<</button>
-    <img src="{{ this.card!.snippet.thumbnails.standard.url }}" alt="poster">
+    <img src="{{ this.card!.snippet.thumbnails.high.url }}" alt="poster">
     <mat-card class="card">
       <div>
         <h2>{{ card!.snippet.title }}</h2>
@@ -12,7 +12,7 @@
         </div>
       </div>
       <app-statistics
-
+        [card]="card!"
       ></app-statistics>
       <app-color-label class="color-label"
         [card]="card"

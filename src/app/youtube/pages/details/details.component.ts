@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ISearchItem } from '../../models/search-item.model';
+import { ISearchItem, IStatisticsItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
 
 @Component({
@@ -14,6 +14,8 @@ export class DetailsComponent implements OnInit {
 
   public cards!: ISearchItem[];
 
+  public stat!: IStatisticsItem;
+
   public id = '';
 
   constructor(
@@ -22,11 +24,11 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCardInfo();
+    this.id = this.route.snapshot.params['id'];
+    this.cards = this.getDataService.searchVideo;
+    // this.getDataService.getStatistics(this.id).subscribe(res =>
+    //   this.stat = res.items[0].statistics);
+    this.card = this.cards.find(elem => elem.id.videoId === this.id);
   }
 
-  getCardInfo(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.card = this.cards.find(item => item.id.videoId === this.id);
-  }
 }

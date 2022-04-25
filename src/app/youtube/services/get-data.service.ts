@@ -13,7 +13,7 @@ export class GetDataService {
   constructor(private http: HttpClient) {}
 
   public getVideos(value: string): Observable<ISearchItem> {
-    return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}`)
+    return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
         switchMap((item: ISearchResponse) => {
           return this.searchVideo = item.items;
@@ -22,6 +22,6 @@ export class GetDataService {
   }
 
   public getStatistics(id: string): Observable<any> {
-    return this.http.get<any>(`videos?part=statistics&id=${id}`);
+    return this.http.get(`videos?part=statistics&id=${id}`);
   }
 }

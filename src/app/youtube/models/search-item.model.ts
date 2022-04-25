@@ -31,8 +31,8 @@ export interface IThumbnails {
   default: IThumbnailsItem,
   medium: IThumbnailsItem,
   high: IThumbnailsItem,
-  standard: IThumbnailsItem,
-  maxres: IThumbnailsItem
+  standard?: IThumbnailsItem,
+  maxres?: IThumbnailsItem
 }
 
 export interface IThumbnailsItem {
@@ -49,6 +49,7 @@ export interface ILocalizedItem {
 export interface IStatisticsItem {
   viewCount: string,
   likeCount: string,
+  dislikeCount?: string,
   favoriteCount: string,
   commentCount: string
 }

@@ -41,17 +41,6 @@ const INTERCEPTOR_PROVIDER: Provider = {
     SharedModule,
     YoutubeRoutingModule,
   ],
-  exports: [
-    DetailsComponent,
-    StatisticsComponent,
-    SearchItemComponent,
-    SearchResultComponent,
-    SortingComponent,
-    LabelColorDirective,
-    FilterByWordPipe,
-    SortByDatePipe,
-    SortByViewsPipe,
-  ],
   providers: [INTERCEPTOR_PROVIDER],
 })
 export class YoutubeModule { }
