@@ -13,7 +13,7 @@ export class AuthGuard implements CanLoad {
 
   canLoad(): boolean | Observable<boolean> | Promise<boolean> {
     this.authService.isAuth$.subscribe(res => this.isAuth = res);
-    if (this.isAuth) {
+    if (this.isAuth || localStorage.getItem('login') !== null) {
       return true;
     } else {
       this.router.navigate(['/auth']);
@@ -22,13 +22,7 @@ export class AuthGuard implements CanLoad {
   }
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean> {
-    this.authService.isAuth$.subscribe(res => this.isAuth = res);
-    if (this.isAuth) {
-      return true;
-    } else {
-      this.router.navigate(['/auth']);
-      return false;
-    }
+    return this.canLoad();
   }
 }
 

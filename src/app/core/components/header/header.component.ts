@@ -9,9 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  public name = '';
-
-  public buttonName = 'Login';
+  public name!: string | null;
 
   public isAuth!: boolean;
 
@@ -22,21 +20,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.subLogin = this.authService.login$.subscribe(value => {
-      this.name = value;
-    });
-    this.subIsAuth = this.authService.isAuth$.subscribe(value => {
-      this.isAuth = value;
-      if (this.isAuth) {
-        this.buttonName = 'Logout';
-      }
-    });
+    if (localStorage.getItem('login') === null) {
+      this.subLogin = this.authService.login$.subscribe(value => this.name = value);
+      this.subIsAuth = this.authService.isAuth$.subscribe(value => this.isAuth = value);
+    } else {
+      this.name = localStorage.getItem('login');
+      this.isAuth = Boolean(localStorage.getItem('isAuth'));
+    }
   }
 
   goToRegister(): void {
     localStorage.clear();
     this.router.navigate(['/auth']);
-    this.buttonName = 'Login';
+    this.subLogin = this.authService.login$.subscribe(value => this.name = value);
+    this.subIsAuth = this.authService.isAuth$.subscribe(value => this.isAuth = value);
   }
 
   ngOnDestroy(): void {

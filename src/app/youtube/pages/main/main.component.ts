@@ -40,20 +40,7 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   ngAfterContentChecked(): void {
     this.cards = this.getDataService.searchVideo;
-    // this.request = this.getDataService.searchVideo;
 
-    // this.arrIds = this.getDataService.arrIds;
-
-    // this.cards = this.request
-    //   ?.reduce((newArr: any[], item: { viewCount: string; }, index: number) => {
-    //     let viewCount = '';
-    //     this.getDataService.getStatistics(this.arrIds[index])
-    //       .subscribe(res => viewCount = res.item[0].statistics.viewCount);
-    //     item.viewCount = viewCount;
-    //     newArr.push(item);
-    //     return newArr;
-    //   }, []);
-    // console.log(this.cards);
   }
 
   ngOnDestroy(): void {
