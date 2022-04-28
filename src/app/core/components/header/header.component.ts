@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   goToRegister(): void {
     localStorage.clear();
     this.router.navigate(['/auth']);
-    this.subLogin = this.authService.login$.subscribe(value => this.name = value);
-    this.subIsAuth = this.authService.isAuth$.subscribe(value => this.isAuth = value);
+    this.isAuth = false;
+    this.name = 'Your Name';
   }
 
   ngOnDestroy(): void {

@@ -11,15 +11,12 @@ export class GetDataService {
 
   public searchVideo!: ISearchItem[];
 
-  public arrIds!: string[];
-
   constructor(private http: HttpClient) {}
 
   public getVideos(value?: string): Observable<ISearchItem> {
     return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
         switchMap((item: ISearchResponse) => {
-          this.arrIds = item.items.map(elem => elem.id.videoId);
           return this.searchVideo = item.items;
         }),
       );
