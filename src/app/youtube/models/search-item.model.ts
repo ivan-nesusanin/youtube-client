@@ -11,7 +11,6 @@ export interface ISearchItem {
 export interface IId {
   kins: string,
   videoId: string,
-  // playlistId?: string,
 }
 
 export interface ISnippetItem {

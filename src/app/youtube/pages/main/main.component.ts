@@ -18,13 +18,7 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   public phrase!: string;
 
-  public request!: ISearchItem[];
-
-  public cards!: any;
-
-  public stat!: string;
-
-  public arrIds!: string[];
+  public cards!: ISearchItem[];
 
   public sub!: Subscription;
 
@@ -40,7 +34,6 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   ngAfterContentChecked(): void {
     this.cards = this.getDataService.searchVideo;
-
   }
 
   ngOnDestroy(): void {

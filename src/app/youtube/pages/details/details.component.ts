@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private getDataService: GetDataService,
     private readonly route: ActivatedRoute,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];

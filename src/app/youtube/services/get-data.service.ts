@@ -15,7 +15,7 @@ export class GetDataService {
 
   constructor(private http: HttpClient) {}
 
-  public getVideos(value: string): Observable<ISearchItem> {
+  public getVideos(value?: string): Observable<ISearchItem> {
     return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
         switchMap((item: ISearchResponse) => {

@@ -24,7 +24,7 @@ export class SearchInputComponent implements OnInit, OnDestroy{
       debounceTime(800),
       distinctUntilChanged(),
     ).subscribe(res => {
-      if (res.search.length > 2) {
+      if (res.search?.length > 2) {
         this.getDataService.getVideos(res.search).subscribe(x => x);
       }
     });
