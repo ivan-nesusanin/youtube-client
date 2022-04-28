@@ -1,0 +1,16 @@
+<section class="wrapper">
+  <form class="form" [formGroup]="form" (ngSubmit) = "submit()">
+    <h2>Login</h2>
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">login</mat-hint>
+      <input matInput placeholder="enter login*" formControlName="login" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">password</mat-hint>
+      <input type="password" matInput placeholder="enter password*" formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button type="submit">Login</button>
+  </form>
+</section>
+

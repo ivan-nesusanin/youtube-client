@@ -1,0 +1,10 @@
+@import "../../../../scss/mixins.scss";
+
+.input-field {
+  min-width: 400px;
+  text-indent: 5px;
+}
+
+.button {
+  @include button(25px, 80px);
+}

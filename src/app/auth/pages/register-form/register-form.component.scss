@@ -1,0 +1,25 @@
+@import "../../../../scss/mixins.scss";
+
+.wrapper {
+  @include wrapper(#fff, center);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  min-height: 250px;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #F2F2F2;
+
+  mat-form-field {
+    margin-bottom: 10px;
+  }
+
+  button {
+    @include button(30px, 125px);
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+}

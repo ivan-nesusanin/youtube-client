@@ -1,0 +1,45 @@
+@import "../../../../scss/mixins.scss";
+
+@mixin tegP($color) {
+  color: $color;
+  margin: 0;
+}
+
+.wrapper {
+  @include wrapper(#E5E5E5, center);
+  height: 50px;
+}
+
+.none {
+  display: none;
+}
+
+.sort-block {
+  display: flex;
+  align-items: center;
+  margin-right: 120px;
+
+  button {
+    padding: 0;
+    color: #2F80ED;
+    text-decoration: underline;
+  }
+}
+
+.gray-text {
+  @include tegP(#929292);
+}
+
+.blue-text {
+  @include tegP(#2F80ED);
+  margin: 0 10px 0 20px;
+}
+
+.input {
+  height: 13px;
+  // width: 150px;
+  margin-top: 5px;
+  // background-color: #fff;
+  text-indent: 5px;
+}
+

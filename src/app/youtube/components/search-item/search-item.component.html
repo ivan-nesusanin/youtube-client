@@ -1,0 +1,17 @@
+<mat-card class="card">
+  <img mat-card-image src="{{ card.snippet.thumbnails.medium.url }}" alt="picture">
+  <mat-card-content>
+    <app-statistics
+      [card]="card"
+    ></app-statistics>
+    <p class="title">{{ card.snippet.title }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button
+      [routerLink]="['/detail', card.id]"
+    >more...</button>
+  </mat-card-actions>
+</mat-card>
+<app-color-label
+  [card]="card"
+></app-color-label>

@@ -1,0 +1,22 @@
+<section class="wrapper">
+  <div class="container">
+    <button mat-raised-button (click)="sendEventService.changeSearchClickValue(true)" routerLink="/main"><<</button>
+    <img src="{{ this.card!.snippet.thumbnails.standard.url }}" alt="poster">
+    <mat-card class="card">
+      <div>
+        <h2>{{ card!.snippet.title }}</h2>
+        <p class="date">{{ card!.snippet.publishedAt | date:'fullDate' }}</p>
+        <div>
+          <h4>Description:</h4>
+          <p>{{ card!.snippet.description }}</p>
+        </div>
+      </div>
+      <app-statistics
+        [card]="card"
+      ></app-statistics>
+      <app-color-label class="color-label"
+        [card]="card"
+      ></app-color-label>
+    </mat-card>
+  </div>
+</section>

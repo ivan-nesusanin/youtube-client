@@ -1,0 +1,28 @@
+@import "../../../../scss/mixins.scss";
+
+.card {
+  max-width: 300px;
+  min-height: 340px;
+  text-align: center;
+  background-color: #E5E5E5;
+
+  img {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  button {
+    @include button(30px, 120px);
+  }
+}
+
+.title {
+  height: 65px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

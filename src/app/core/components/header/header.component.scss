@@ -1,0 +1,35 @@
+@import "../../../../scss/mixins.scss";
+
+.wrapper {
+  @include wrapper(#E5E5E5, space-around);
+  height: 80px;
+}
+
+.search-block {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  background-color: #2F80ED;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.user-block {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+
+  p {
+    margin: 0;
+    color: #4F4F4F;
+  }
+
+  button {
+    @include button(25px, 80px);
+  }
+}

@@ -1,10 +1,9 @@
-@mixin wrapper($height) {
+@mixin wrapper($color, $position) {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: $position;
   width: 100%;
-  height: $height;
-  background-color: #E5E5E5;
+  background-color: $color;
 }
 
 @mixin button ($height, $width){

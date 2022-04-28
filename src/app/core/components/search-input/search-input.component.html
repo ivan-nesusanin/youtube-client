@@ -1,0 +1,13 @@
+<div>
+  <mat-form-field class="input-field">
+    <mat-label>What are you want to find out?</mat-label>
+    <input matInput type="search" [(ngModel)]="value" autocomplete="off">
+    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button class="button"
+    (click)="sendEventService.changeSearchClickValue(true)"
+    routerLink="/main"
+  >search</button>
+</div>

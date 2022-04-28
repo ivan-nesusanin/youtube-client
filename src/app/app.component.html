@@ -1,16 +1,3 @@
-<app-header
-  (eShowSorting)="this.showSortBlock = !this.showSortBlock"
-  (eShowSearch)="this.showSearchBlock = true"
-></app-header>
-<app-sorting
-  (eSortByDate)="this.clickDate = !this.clickDate"
-  (eSortByViews)="this.clickViews = !this.clickViews"
-  (eGetPhrase)="getPhrase($event)"
-  [hidden]="showSortBlock"
-></app-sorting>
-<app-search-result
-  *ngIf="showSearchBlock"
-  [clickDate]="clickDate"
-  [clickViews]="clickViews"
-  [phrase]="phrase"
-></app-search-result>
+<app-header></app-header>
+
+<router-outlet></router-outlet>
