@@ -4,13 +4,22 @@
     <mat-form-field appearance="fill">
       <mat-hint align="end">login</mat-hint>
       <input matInput placeholder="enter login*" formControlName="login" autocomplete="off">
+      <mat-error>
+        You must enter a login
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">password</mat-hint>
       <input type="password" matInput placeholder="enter password*" formControlName="password">
+      <mat-error>
+        You must enter a password
+      </mat-error>
+      <mat-error>
+        The password must contain at least 8 characters
+      </mat-error>
     </mat-form-field>
-    <button mat-raised-button type="submit">Login</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Login</button>
   </form>
 </section>
 

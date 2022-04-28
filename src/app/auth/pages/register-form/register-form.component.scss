@@ -18,7 +18,7 @@
   }
 
   button {
-    @include button(30px, 125px);
+    width: 125px;
     align-self: flex-end;
     margin-top: 10px;
   }
