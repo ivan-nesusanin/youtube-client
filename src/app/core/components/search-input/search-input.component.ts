@@ -1,27 +1,26 @@
-import { Component, /* OnDestroy, */ OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SendEventService } from '@data/app/shared/services/send-event.service';
 import { GetDataService } from '@data/app/youtube/services/get-data.service';
-import { debounceTime, distinctUntilChanged/* , Subscription */ } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
 })
-export class SearchInputComponent implements OnInit/* , OnDestroy */{
+export class SearchInputComponent implements OnInit, OnDestroy{
   public searchForm!: FormGroup;
 
-  // private sub: Subscription;
+  private sub!: Subscription;
 
-  constructor(public sendEventService: SendEventService, private getDataService: GetDataService) {}
+  constructor(private getDataService: GetDataService) {}
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       search: new FormControl(''),
     });
 
-    this.searchForm.valueChanges.pipe(
+    this.sub = this.searchForm.valueChanges.pipe(
       debounceTime(800),
       distinctUntilChanged(),
     ).subscribe(res => {
@@ -31,7 +30,7 @@ export class SearchInputComponent implements OnInit/* , OnDestroy */{
     });
   }
 
-  // ngOnDestroy(): void {
-  //   this.sub.unsubscribe();
-  // }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

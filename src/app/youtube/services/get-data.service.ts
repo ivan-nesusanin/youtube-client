@@ -8,7 +8,10 @@ import { ISearchResponse } from '../models/search-response.model';
   providedIn: 'root',
 })
 export class GetDataService {
+
   public searchVideo!: ISearchItem[];
+
+  public arrIds!: string[];
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +19,7 @@ export class GetDataService {
     return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
         switchMap((item: ISearchResponse) => {
+          this.arrIds = item.items.map(elem => elem.id.videoId);
           return this.searchVideo = item.items;
         }),
       );

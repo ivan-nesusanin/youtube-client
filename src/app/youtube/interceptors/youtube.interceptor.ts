@@ -7,8 +7,7 @@ export class YoutubeInterceptor implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const URL = 'https://www.googleapis.com/youtube/v3';
     const KEY = 'AIzaSyAPpc7I6b_9vRxlNmKhigQSWTWCWzhq9PU';
-    // const KEY = /* 'AIzaSyATO4Oq1Cv6B82B_dSSsXDpWb1ksEL7_nw' */ 'AIzaSyCTWC75i70moJLzyNh3tt4jzCljZcRkU8Y';
-    const COUNT = '20';
+    const COUNT = '5';
     return next.handle(req.clone({
       url: `${URL}/${req.url}`,
       setParams: {

@@ -4,7 +4,8 @@ export interface ISearchItem {
   etag: string,
   id: IId,
   snippet: ISnippetItem,
-  statistics: IStatisticsItem
+  statistics: IStatisticsItem,
+  viewCount: string
 }
 
 export interface IId {

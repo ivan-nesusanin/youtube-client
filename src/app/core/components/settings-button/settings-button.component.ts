@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SendEventService } from '@data/app/shared/services/send-event.service';
+import { SendEventService } from '@data/app/core/services/send-event.service';
 
 @Component({
   selector: 'app-settings-button',
@@ -8,8 +8,12 @@ import { SendEventService } from '@data/app/shared/services/send-event.service';
 })
 export class SettingsButtonComponent {
 
-  constructor(public sendEventService: SendEventService) { }
+  constructor(private sendEventService: SendEventService) { }
 
   public showSortBlock = true;
+
+  useService() {
+    this.sendEventService.changeSettingsClickValue(this.showSortBlock = !this.showSortBlock);
+  }
 
 }

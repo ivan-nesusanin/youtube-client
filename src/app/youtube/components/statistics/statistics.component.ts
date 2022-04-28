@@ -1,5 +1,5 @@
-import { Component, Input, /* OnDestroy, */ OnInit } from '@angular/core';
-// import { Subscription } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ISearchItem, IStatisticsItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
 
@@ -8,25 +8,24 @@ import { GetDataService } from '../../services/get-data.service';
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss'],
 })
-export class StatisticsComponent implements OnInit/* , OnDestroy */{
+export class StatisticsComponent implements OnInit, OnDestroy{
   @Input() card!: ISearchItem;
 
   public stat?: IStatisticsItem;
 
-  // private sub!: Subscription;
+  public sub!: Subscription;
 
   constructor(private getDataService: GetDataService) {}
 
   ngOnInit(): void {
-    this.getDataService.getStatistics(this.card.id.videoId)
+    this.sub = this.getDataService.getStatistics(this.card.id.videoId)
       .subscribe((res) => {
         this.stat = res.items[0].statistics;
-        // console.log(res)
       });
   }
 
-  // ngOnDestroy(): void {
-  //   this.sub.unsubscribe();
-  // }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
 }

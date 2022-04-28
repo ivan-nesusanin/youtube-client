@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '@data/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -22,7 +22,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   submit(): void {
-    this.authService.login(this.form.value.login);
+    this.authService.login(this.form.value.login, true);
     this.router.navigate(['/main']);
   }
 

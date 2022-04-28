@@ -25,9 +25,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+
     this.cards = this.getDataService.searchVideo;
-    // this.getDataService.getStatistics(this.id).subscribe(res =>
-    //   this.stat = res.items[0].statistics);
+
     this.card = this.cards.find(elem => elem.id.videoId === this.id);
   }
 
