@@ -3,6 +3,7 @@ import { Route, RouterModule } from '@angular/router';
 import { RegisterFormComponent } from './pages/register-form/register-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 export const authRoutes: Route[] = [
   { path: '', component: RegisterFormComponent },
@@ -19,6 +20,9 @@ export const authRoutes: Route[] = [
   ],
   exports: [
     RegisterFormComponent,
+  ],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
   ],
 })
 export class AuthModule { }

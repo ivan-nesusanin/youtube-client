@@ -1,22 +1,40 @@
 <section class="wrapper">
-  <form class="form" [formGroup]="form" (submit) = "submit()">
+  <form class="form" [formGroup]="form" (submit) = "submitForm()">
     <h2>Login</h2>
     <mat-form-field appearance="fill">
       <mat-hint align="end">login</mat-hint>
-      <input matInput placeholder="enter login*" formControlName="login" autocomplete="off">
-      <mat-error>
-        You must enter a login
+      <input type="email" matInput placeholder="enter your email *" formControlName="login" autocomplete="off">
+      <mat-error *ngIf="form.get('login')?.hasError('email') && !form.get('login')?.hasError('required')">
+        The login email is invalid
+      </mat-error>
+      <mat-error *ngIf="form.get('login')?.hasError('required')">
+        Please enter a login email
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">password</mat-hint>
-      <input type="password" matInput placeholder="enter password*" formControlName="password">
-      <mat-error>
-        You must enter a password
+      <input [type]="hide ? 'password' : 'text'" matInput placeholder="enter your password *" formControlName="password" autocomplete="off">
+      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button> -->
+      <mat-error *ngIf="form.get('password')?.hasError('pattern')">
+        Your password isn't strong enough
       </mat-error>
-      <mat-error>
-        The password must contain at least 8 characters
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+        * the password must contain at least 8 characters
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidRegister') && !form.get('password')?.hasError('required')">
+        * a mixture of both uppercase and lowercase letters
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidNumber') && !form.get('password')?.hasError('required')">
+        * a mixture of letters and numbers
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidSymbol') && !form.get('password')?.hasError('required')">
+        * inclusion of at least one special character, e.g., ! @ # ? ]
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Please enter a password
       </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Login</button>
