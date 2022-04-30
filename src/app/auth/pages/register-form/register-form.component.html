@@ -19,7 +19,7 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button> -->
       <mat-error *ngIf="form.get('password')?.hasError('pattern')">
-        Your password isn't strong enough
+        Your password isn't strong enough:
       </mat-error>
       <mat-error *ngIf="form.get('password')?.hasError('minlength')">
         * the password must contain at least 8 characters
