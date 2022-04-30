@@ -1,0 +1,60 @@
+<section class="wrapper">
+  <form class="form" [formGroup]="adminForm">
+    <h2>Create new card</h2>
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">title</mat-hint>
+      <input type="text" matInput formControlName="title" autocomplete="off">
+      <mat-error *ngIf="adminForm.get('title')?.hasError('required')">
+        Please enter a title
+      </mat-error>
+      <mat-error *ngIf="adminForm.get('title')?.hasError('minlength')">
+        The title is too short
+      </mat-error>
+      <mat-error *ngIf="adminForm.get('title')?.hasError('maxlength')">
+        The title is too long
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">description</mat-hint>
+      <input type="text" matInput formControlName="description" autocomplete="off">
+      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button> -->
+      <!-- <mat-error *ngIf="form.get('password')?.hasError('pattern')">
+        Your password isn't strong enough
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+        * the password must contain at least 8 characters
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidRegister') && !form.get('password')?.hasError('required')">
+        * a mixture of both uppercase and lowercase letters
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidNumber') && !form.get('password')?.hasError('required')">
+        * a mixture of letters and numbers
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('isValidSymbol') && !form.get('password')?.hasError('required')">
+        * inclusion of at least one special character, e.g., ! @ # ? ]
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Please enter a password
+      </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">link to the image cover</mat-hint>
+      <input type="text" matInput formControlName="image" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">link to the video</mat-hint>
+      <input type="text" matInput formControlName="video" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-hint align="end">creation date</mat-hint>
+      <input type="text" matInput formControlName="date" autocomplete="off">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">Login</button>
+  </form>
+</section>

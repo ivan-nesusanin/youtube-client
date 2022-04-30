@@ -4,6 +4,7 @@ import { RegisterFormComponent } from './pages/register-form/register-form.compo
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { AdminComponent } from './pages/admin/admin.component';
 
 export const authRoutes: Route[] = [
   { path: '', component: RegisterFormComponent },
@@ -12,6 +13,7 @@ export const authRoutes: Route[] = [
 @NgModule({
   declarations: [
     RegisterFormComponent,
+    AdminComponent,
   ],
   imports: [
     RouterModule.forChild(authRoutes),
@@ -20,6 +22,7 @@ export const authRoutes: Route[] = [
   ],
   exports: [
     RegisterFormComponent,
+    AdminComponent,
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
