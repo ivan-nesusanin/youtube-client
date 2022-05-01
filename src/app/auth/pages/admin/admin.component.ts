@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,11 +19,28 @@ export class AdminComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(20),
       ]),
-      description: new FormControl(null),
-      image: new FormControl(null),
-      video: new FormControl(null),
-      date: new FormControl(null),
+      description: new FormControl(null, Validators.maxLength(255)),
+      image: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('(https?://)?([\da-z.-]+)\.([a-z.]{2,6})[/\w .-]*/?'),
+      ]),
+      video: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('(https?://)?([\da-z.-]+)\.([a-z.]{2,6})[/\w .-]*/?'),
+      ]),
+      date: new FormControl(null, [
+        Validators.required,
+        this.validatorOfDate,
+      ]),
     });
+  }
+
+  validatorOfDate(control: AbstractControl): { [key: string]: boolean } | null {
+    const enteredDate = +(new Date(control.value));
+    if (Date.now() < enteredDate) {
+      return { isValidDate: true };
+    }
+    return null;
   }
 
 }

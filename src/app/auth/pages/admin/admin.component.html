@@ -2,7 +2,7 @@
   <form class="form" [formGroup]="adminForm">
     <h2>Create new card</h2>
     <mat-form-field appearance="fill">
-      <mat-hint align="end">title</mat-hint>
+      <mat-hint align="end">title *</mat-hint>
       <input type="text" matInput formControlName="title" autocomplete="off">
       <mat-error *ngIf="adminForm.get('title')?.hasError('required')">
         Please enter a title
@@ -18,9 +18,9 @@
     <mat-form-field appearance="fill">
       <mat-hint align="end">description</mat-hint>
       <input type="text" matInput formControlName="description" autocomplete="off">
-      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button> -->
+      <mat-error *ngIf="adminForm.get('title')?.hasError('maxlength')">
+        The description is too long
+      </mat-error>
       <!-- <mat-error *ngIf="form.get('password')?.hasError('pattern')">
         Your password isn't strong enough
       </mat-error>
@@ -42,18 +42,36 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint align="end">link to the image cover</mat-hint>
+      <mat-hint align="end">link to the image cover *</mat-hint>
       <input type="text" matInput formControlName="image" autocomplete="off">
+      <mat-error *ngIf="adminForm.get('image')?.hasError('required')">
+        Please enter a link to the image
+      </mat-error>
+      <mat-error *ngIf="adminForm.get('image')?.hasError('pattern')">
+        The image link is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint align="end">link to the video</mat-hint>
+      <mat-hint align="end">link to the video *</mat-hint>
       <input type="text" matInput formControlName="video" autocomplete="off">
+      <mat-error *ngIf="adminForm.get('video')?.hasError('required')">
+        Please enter a link to the video
+      </mat-error>
+      <mat-error *ngIf="adminForm.get('video')?.hasError('pattern')">
+        The video link is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint align="end">creation date</mat-hint>
-      <input type="text" matInput formControlName="date" autocomplete="off">
+      <mat-hint align="end">creation date *</mat-hint>
+      <input type="text" matInput formControlName="date" placeholder="Input format: Year / Month / Day" autocomplete="off">
+      <mat-error *ngIf="adminForm.get('date')?.hasError('required')">
+        Please enter a creation date
+      </mat-error>
+      <mat-error *ngIf="adminForm.get('date')?.hasError('isValidDate')">
+        The date is invalid
+      </mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">Login</button>
   </form>

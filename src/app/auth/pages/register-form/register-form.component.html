@@ -2,8 +2,8 @@
   <form class="form" [formGroup]="form" (submit) = "submitForm()">
     <h2>Login</h2>
     <mat-form-field appearance="fill">
-      <mat-hint align="end">login</mat-hint>
-      <input type="email" matInput placeholder="enter your email *" formControlName="login" autocomplete="off">
+      <mat-hint align="end">login *</mat-hint>
+      <input type="email" matInput placeholder="enter your email" formControlName="login" autocomplete="off">
       <mat-error *ngIf="form.get('login')?.hasError('email') && !form.get('login')?.hasError('required')">
         The login email is invalid
       </mat-error>
@@ -13,8 +13,8 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint align="end">password</mat-hint>
-      <input [type]="hide ? 'password' : 'text'" matInput placeholder="enter your password *" formControlName="password" autocomplete="off">
+      <mat-hint align="end">password *</mat-hint>
+      <input [type]="hide ? 'password' : 'text'" matInput placeholder="enter your password" formControlName="password" autocomplete="off">
       <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button> -->
