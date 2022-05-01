@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(8),
-        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])'),
+        Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}/),
         this.validatorOfRegister,
         this.validatorOfNumber,
         this.validatorOfSymbol,
