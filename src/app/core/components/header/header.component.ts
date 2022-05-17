@@ -21,8 +21,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (localStorage.getItem('login') === null) {
-      this.subLogin = this.authService.login$.subscribe(value => this.name = value);
-      this.subIsAuth = this.authService.isAuth$.subscribe(value => this.isAuth = value);
+      this.subLogin = this.authService.login$.subscribe(
+        (value) => (this.name = value)
+      );
+      this.subIsAuth = this.authService.isAuth$.subscribe(
+        (value) => (this.isAuth = value)
+      );
     } else {
       this.name = localStorage.getItem('login');
       this.isAuth = Boolean(localStorage.getItem('isAuth'));

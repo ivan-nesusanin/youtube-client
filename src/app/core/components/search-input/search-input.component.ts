@@ -8,7 +8,7 @@ import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
 })
-export class SearchInputComponent implements OnInit, OnDestroy{
+export class SearchInputComponent implements OnInit, OnDestroy {
   public searchForm!: FormGroup;
 
   private sub!: Subscription;
@@ -20,18 +20,16 @@ export class SearchInputComponent implements OnInit, OnDestroy{
       search: new FormControl(''),
     });
 
-    this.sub = this.searchForm.valueChanges.pipe(
-      debounceTime(800),
-      distinctUntilChanged(),
-    ).subscribe(res => {
-      if (res.search?.length > 2) {
-        this.getDataService.getVideos(res.search).subscribe(x => x);
-      }
-    });
+    this.sub = this.searchForm.valueChanges
+      .pipe(debounceTime(800), distinctUntilChanged())
+      .subscribe((res) => {
+        if (res.search?.length > 2) {
+          this.getDataService.getVideos(res.search).subscribe((x) => x);
+        }
+      });
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
 }

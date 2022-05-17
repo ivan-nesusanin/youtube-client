@@ -8,17 +8,17 @@ import { ISearchResponse } from '../models/search-response.model';
   providedIn: 'root',
 })
 export class GetDataService {
-
   public searchVideo!: ISearchItem[];
 
   constructor(private http: HttpClient) {}
 
   public getVideos(value?: string): Observable<ISearchItem> {
-    return this.http.get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
+    return this.http
+      .get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
         switchMap((item: ISearchResponse) => {
-          return this.searchVideo = item.items;
-        }),
+          return (this.searchVideo = item.items);
+        })
       );
   }
 

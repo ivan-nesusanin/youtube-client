@@ -9,7 +9,6 @@ import { GetDataService } from '../../services/get-data.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-
   public card?: ISearchItem;
 
   public cards!: ISearchItem[];
@@ -20,7 +19,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private getDataService: GetDataService,
-    private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +27,6 @@ export class DetailsComponent implements OnInit {
 
     this.cards = this.getDataService.searchVideo;
 
-    this.card = this.cards.find(elem => elem.id.videoId === this.id);
+    this.card = this.cards.find((elem) => elem.id.videoId === this.id);
   }
-
 }

@@ -1,4 +1,9 @@
-import { AfterContentChecked, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { SendEventService } from '@data/app/core/services/send-event.service';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
@@ -24,12 +29,13 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   constructor(
     private getDataService: GetDataService,
-    private sendEventService: SendEventService,
+    private sendEventService: SendEventService
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.sendEventService.clickSettingsValue$
-      .subscribe((value) => this.showSortBlock = value);
+    this.sub = this.sendEventService.clickSettingsValue$.subscribe(
+      (value) => (this.showSortBlock = value)
+    );
   }
 
   ngAfterContentChecked(): void {
@@ -43,7 +49,4 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
   public getPhrase(model: string) {
     this.phrase = model;
   }
-
 }
-
-

@@ -7,13 +7,13 @@ import { SendEventService } from '@data/app/core/services/send-event.service';
   styleUrls: ['./settings-button.component.scss'],
 })
 export class SettingsButtonComponent {
-
-  constructor(private sendEventService: SendEventService) { }
+  constructor(private sendEventService: SendEventService) {}
 
   public showSortBlock = true;
 
   useService() {
-    this.sendEventService.changeSettingsClickValue(this.showSortBlock = !this.showSortBlock);
+    this.sendEventService.changeSettingsClickValue(
+      (this.showSortBlock = !this.showSortBlock)
+    );
   }
-
 }
