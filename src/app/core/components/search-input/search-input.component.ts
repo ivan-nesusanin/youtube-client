@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GetDataService } from '@data/app/youtube/services/get-data.service';
-import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',
@@ -21,15 +21,19 @@ export class SearchInputComponent implements OnInit, OnDestroy {
     });
 
     this.sub = this.searchForm.valueChanges
-      .pipe(debounceTime(800), distinctUntilChanged())
+      .pipe(
+        debounceTime(800),
+        distinctUntilChanged(),
+        filter((res) => res.search?.trim().length > 2)
+      )
       .subscribe((res) => {
-        if (res.search?.length > 2) {
-          this.getDataService.getVideos(res.search).subscribe((x) => x);
-        }
+        this.getDataService.getVideos(res.search).subscribe((x) => x);
       });
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }

@@ -43,7 +43,9 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   public getPhrase(model: string) {
