@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ISearchItem, IStatisticsItem } from '../../models/search-item.model';
+import { ISearchItem } from '../../models/search-item.model';
+import { IStatisticsItem } from '../../models/statistics.model';
 import { GetDataService } from '../../services/get-data.service';
+
 
 @Component({
   selector: 'app-details',

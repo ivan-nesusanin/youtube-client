@@ -1,55 +1,34 @@
 export interface ISearchItem {
-  title: string,
-  kind: string,
-  etag: string,
-  id: IId,
-  snippet: ISnippetItem,
-  statistics: IStatisticsItem,
-  viewCount: string
+  etag: string;
+  id: IId;
+  kind: string;
+  snippet: ISnippetItem;
 }
 
 export interface IId {
-  kins: string,
-  videoId: string,
+  kind: string;
+  videoId: string;
 }
 
 export interface ISnippetItem {
-  publishedAt: string,
-  channelId: string,
-  title: string,
-  description: string,
-  thumbnails: IThumbnails,
-  channelTitle: string,
-  tags: string[],
-  categoryId: string,
-  liveBroadcastContent: string,
-  localized: ILocalizedItem,
-  defaultAudioLanguage: string
+  channelId: string;
+  channelTitle: string;
+  description: string;
+  liveBroadcastContent: string;
+  publishedTime: string;
+  publishedAt: string;
+  thumbnails: IThumbnails;
+  title: string;
 }
 
 export interface IThumbnails {
-  default: IThumbnailsItem,
-  medium: IThumbnailsItem,
-  high: IThumbnailsItem,
-  standard?: IThumbnailsItem,
-  maxres?: IThumbnailsItem
+  default: IThumbnailsItem;
+  high: IThumbnailsItem;
+  medium: IThumbnailsItem;
 }
 
 export interface IThumbnailsItem {
-  url: string,
-  width: number,
-  height: number
-}
-
-export interface ILocalizedItem {
-  title: string,
-  description: string
-}
-
-export interface IStatisticsItem {
-  viewCount: string,
-  likeCount: string,
-  dislikeCount?: string,
-  favoriteCount: string,
-  commentCount: string
+  height: number;
+  url: string;
+  width: number;
 }

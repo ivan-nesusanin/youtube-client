@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ISearchItem, IStatisticsItem } from '../../models/search-item.model';
+import { ISearchItem } from '../../models/search-item.model';
+import { IStatisticsItem } from '../../models/statistics.model';
 import { GetDataService } from '../../services/get-data.service';
 
 @Component({
@@ -21,13 +22,11 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     this.sub = this.getDataService
       .getStatistics(this.card.id.videoId)
       .subscribe((res) => {
-        this.stat = res.items[0].statistics;
+        this.stat = res?.items[0]?.statistics || [];
       });
   }
 
   ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
+    this.sub?.unsubscribe();
   }
 }
