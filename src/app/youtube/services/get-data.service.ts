@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { ISearchItem } from '../models/search-item.model';
 import { ISearchResponse } from '../models/search-response.model';
 
@@ -9,6 +9,8 @@ import { ISearchResponse } from '../models/search-response.model';
 })
 export class GetDataService {
   public searchVideo!: ISearchItem[];
+
+  public showPanel$ = new BehaviorSubject<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
@@ -24,5 +26,9 @@ export class GetDataService {
 
   public getStatistics(id: string): Observable<any> {
     return this.http.get(`videos?part=statistics&id=${id}`);
+  }
+
+  public showSortPanel(value: boolean): void {
+    this.showPanel$.next(value);
   }
 }

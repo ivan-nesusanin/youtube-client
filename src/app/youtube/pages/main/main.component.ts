@@ -1,22 +1,14 @@
-import {
-  AfterContentChecked,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { SendEventService } from '@data/app/core/services/send-event.service';
+import { AfterContentChecked, Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
-  public showSortBlock = true;
-
+export class MainComponent implements AfterContentChecked, OnDestroy {
   public clickDate: boolean | undefined;
 
   public clickViews: boolean | undefined;
@@ -25,27 +17,21 @@ export class MainComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   public cards!: ISearchItem[];
 
+  public showPanel!: boolean;
+
   public sub!: Subscription;
 
-  constructor(
-    private getDataService: GetDataService,
-    private sendEventService: SendEventService
-  ) {}
-
-  ngOnInit(): void {
-    this.sub = this.sendEventService.clickSettingsValue$.subscribe(
-      (value) => (this.showSortBlock = value)
-    );
-  }
+  constructor(private getDataService: GetDataService) {}
 
   ngAfterContentChecked(): void {
     this.cards = this.getDataService.searchVideo;
+    this.sub = this.getDataService.showPanel$.subscribe(
+      (res) => (this.showPanel = res)
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
+    this.sub?.unsubscribe();
   }
 
   public getPhrase(model: string) {

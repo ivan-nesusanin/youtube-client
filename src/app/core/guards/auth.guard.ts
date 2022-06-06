@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class AuthGuard implements CanLoad {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  canLoad(): boolean | Observable<boolean> | Promise<boolean> {
+  canLoad(): boolean {
     this.authService.isAuth$.subscribe((res) => (this.isAuth = res));
     if (this.isAuth || localStorage.getItem('login') !== null) {
       return true;
@@ -21,7 +20,7 @@ export class AuthGuard implements CanLoad {
     }
   }
 
-  canActivate(): boolean | Observable<boolean> | Promise<boolean> {
+  canActivate(): boolean {
     return this.canLoad();
   }
 }

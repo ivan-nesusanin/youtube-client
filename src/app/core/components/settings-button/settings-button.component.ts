@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SendEventService } from '@data/app/core/services/send-event.service';
+import { GetDataService } from '@data/app/youtube/services/get-data.service';
 
 @Component({
   selector: 'app-settings-button',
@@ -7,13 +7,11 @@ import { SendEventService } from '@data/app/core/services/send-event.service';
   styleUrls: ['./settings-button.component.scss'],
 })
 export class SettingsButtonComponent {
-  constructor(private sendEventService: SendEventService) {}
+  public showPanel = true;
 
-  public showSortBlock = true;
+  constructor(private getDataService: GetDataService) {}
 
-  useService() {
-    this.sendEventService.changeSettingsClickValue(
-      (this.showSortBlock = !this.showSortBlock)
-    );
+  public changeShowPanel(): void {
+    this.getDataService.showSortPanel((this.showPanel = !this.showPanel));
   }
 }

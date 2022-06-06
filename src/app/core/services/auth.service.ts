@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public login$ = new Subject<string>();
+  public login$ = new BehaviorSubject<string>('Your Name');
 
-  public isAuth$ = new Subject<boolean>();
+  public isAuth$ = new BehaviorSubject<boolean>(false);
 
   login(value: string, isAuth: boolean): void {
     localStorage.setItem('login', value);

@@ -1,6 +1,8 @@
 <section class="wrapper">
   <app-search-item
-    *ngFor="let card of cards | sortByDate:clickDate | sortByViews:clickViews | filterByWord:phrase"
+    *ngFor="let card of cards | sortByDate: clickDate | filterByWord: phrase"
     [card]="card"
   ></app-search-item>
 </section>
+
+<!-- *ngFor="let card of cards | sortByDate:clickDate | sortByViews:clickViews | filterByWord:phrase" -->
