@@ -1,31 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ISearchItem } from '../models/search-item.model';
 import { ISearchResponse } from '../models/search-response.model';
+import { IStatisticsResponse } from '../models/statistics.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetDataService {
-  public searchVideo!: ISearchItem[];
+  public searchVideo$ = new BehaviorSubject<ISearchItem[]>([]);
 
   public showPanel$ = new BehaviorSubject<boolean>(true);
 
   constructor(private http: HttpClient) {}
 
-  public getVideos(value?: string): Observable<ISearchItem> {
+  public getVideos(value?: string): Observable<ISearchResponse> {
     return this.http
       .get<ISearchResponse>(`search?part=snippet&q=${value}&type=video`)
       .pipe(
-        switchMap((item: ISearchResponse) => {
-          return (this.searchVideo = item.items);
+        tap((item: ISearchResponse) => {
+          this.searchVideo$.next(item.items);
         })
       );
   }
 
-  public getStatistics(id: string): Observable<any> {
-    return this.http.get(`videos?part=statistics&id=${id}`);
+  public getStatistics(id: string): Observable<IStatisticsResponse> {
+    return this.http.get<IStatisticsResponse>(
+      `videos?part=statistics&id=${id}`
+    );
   }
 
   public showSortPanel(value: boolean): void {

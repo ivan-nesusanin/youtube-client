@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISearchItem } from '../../models/search-item.model';
-import { IStatisticsItem } from '../../models/statistics.model';
 import { GetDataService } from '../../services/get-data.service';
-
 
 @Component({
   selector: 'app-details',
@@ -12,10 +10,6 @@ import { GetDataService } from '../../services/get-data.service';
 })
 export class DetailsComponent implements OnInit {
   public card?: ISearchItem;
-
-  public cards!: ISearchItem[];
-
-  public stat!: IStatisticsItem;
 
   public id = '';
 
@@ -27,8 +21,8 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
-    this.cards = this.getDataService.searchVideo;
-
-    this.card = this.cards.find((elem) => elem.id.videoId === this.id);
+    this.getDataService.searchVideo$.subscribe(
+      (res) => (this.card = res.find((elem) => elem.id.videoId === this.id))
+    );
   }
 }

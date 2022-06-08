@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
@@ -8,7 +8,7 @@ import { GetDataService } from '../../services/get-data.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements AfterContentChecked, OnDestroy {
+export class MainComponent implements OnInit, OnDestroy {
   public clickDate: boolean | undefined;
 
   public clickViews: boolean | undefined;
@@ -23,8 +23,9 @@ export class MainComponent implements AfterContentChecked, OnDestroy {
 
   constructor(private getDataService: GetDataService) {}
 
-  ngAfterContentChecked(): void {
-    this.cards = this.getDataService.searchVideo;
+  ngOnInit(): void {
+    this.getDataService.searchVideo$.subscribe((res) => (this.cards = res));
+
     this.sub = this.getDataService.showPanel$.subscribe(
       (res) => (this.showPanel = res)
     );
