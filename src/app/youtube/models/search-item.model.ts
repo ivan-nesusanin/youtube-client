@@ -1,8 +1,11 @@
+import { IStatisticsItem } from './statistics.model';
+
 export interface ISearchItem {
   etag: string;
   id: IId;
   kind: string;
   snippet: ISnippetItem;
+  statistics?: IStatisticsItem;
 }
 
 export interface IId {

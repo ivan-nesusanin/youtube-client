@@ -7,7 +7,7 @@ import { ISearchItem } from '../../models/search-item.model';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent {
-  @Input() cards: ISearchItem[] = [];
+  @Input() cards!: ISearchItem[];
 
   @Input() clickDate: boolean | undefined;
 
