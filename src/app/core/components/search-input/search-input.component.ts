@@ -35,7 +35,7 @@ export class SearchInputComponent implements OnInit, OnDestroy {
           return this.getDataService.getVideos(res.search);
         })
       )
-      .subscribe((x) => x);
+      .subscribe((res) => res);
   }
 
   ngOnDestroy(): void {

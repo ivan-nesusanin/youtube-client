@@ -1,12 +1,12 @@
 <app-sorting
-  *ngIf="cards?.length && showPanel"
+  *ngIf="cards?.length && showPanel; else text"
   (eSortByDate)="this.clickDate = !this.clickDate"
   (eSortByViews)="this.clickViews = !this.clickViews"
   (eGetPhrase)="getPhrase($event)"
 ></app-sorting>
-<div *ngIf="!cards?.length">
-  Enter the name of the video you are looking for
-</div>
+<ng-template #text>
+  <div>Enter the name of the video you are looking for</div>
+</ng-template>
 <app-search-result
   [cards]="cards"
   [clickDate]="clickDate"

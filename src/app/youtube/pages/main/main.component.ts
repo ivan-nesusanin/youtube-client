@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ShowSortPanelService } from '@data/app/core/services/show-sort-panel.service';
+import { Subscription, tap } from 'rxjs';
 import { ISearchItem } from '../../models/search-item.model';
 import { IStatisticsItem } from '../../models/statistics.model';
 import { GetDataService } from '../../services/get-data.service';
@@ -28,26 +29,32 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public subStat!: Subscription;
 
-  constructor(private getDataService: GetDataService) {}
+  constructor(
+    private getDataService: GetDataService,
+    private showSortPanel: ShowSortPanelService
+  ) {}
 
   ngOnInit(): void {
-    this.subVideos = this.getDataService.searchVideo$.subscribe((res) => {
-      this.cards = [];
-      res.reduce((acc, item) => {
-        this.subStat = this.getDataService
-          .getStatistics(item.id.videoId)
-          .subscribe((response) => {
-            return acc.push({
-              ...item,
-              statistics: response?.items[0]?.statistics || [],
-            });
-          });
-        return acc;
-      }, this.cards);
-      console.log(this.cards);
-    });
+    this.subVideos = this.getDataService.searchVideo$
+      .pipe(
+        tap((res) => {
+          this.cards = [];
+          res.reduce((acc, item) => {
+            this.subStat = this.getDataService
+              .getStatistics(item.id.videoId)
+              .subscribe((response) => {
+                return acc.push({
+                  ...item,
+                  statistics: response?.items[0]?.statistics || [],
+                });
+              });
+            return acc;
+          }, this.cards);
+        })
+      )
+      .subscribe((res) => res);
 
-    this.subShowPanel = this.getDataService.showPanel$.subscribe(
+    this.subShowPanel = this.showSortPanel.showPanel$.subscribe(
       (res) => (this.showPanel = res)
     );
   }

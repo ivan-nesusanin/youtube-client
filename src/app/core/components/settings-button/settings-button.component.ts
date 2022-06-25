@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GetDataService } from '@data/app/youtube/services/get-data.service';
+import { ShowSortPanelService } from '../../services/show-sort-panel.service';
 
 @Component({
   selector: 'app-settings-button',
@@ -9,9 +9,9 @@ import { GetDataService } from '@data/app/youtube/services/get-data.service';
 export class SettingsButtonComponent {
   public showPanel = true;
 
-  constructor(private getDataService: GetDataService) {}
+  constructor(private showSortPanel: ShowSortPanelService) {}
 
   public changeShowPanel(): void {
-    this.getDataService.showSortPanel((this.showPanel = !this.showPanel));
+    this.showSortPanel.showSortPanel((this.showPanel = !this.showPanel));
   }
 }

@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+import { tap, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanLoad {
-  public isAuth!: boolean;
-
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canLoad(): boolean {
-    this.authService.isAuth$.subscribe((res) => (this.isAuth = res));
-    if (this.isAuth || localStorage.getItem('login') !== null) {
-      return true;
-    } else {
-      this.router.navigate(['/auth']);
-      return false;
-    }
-  }
-
-  canActivate(): boolean {
-    return this.canLoad();
+  canActivate(): Observable<boolean> {
+    return this.authService.isAuth$.asObservable().pipe(
+      tap((isAuth) => {
+        if (!isAuth) {
+          this.router.navigate(['/auth']);
+        }
+      })
+    );
   }
 }

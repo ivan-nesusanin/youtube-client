@@ -11,8 +11,6 @@ import { IStatisticsResponse } from '../models/statistics.model';
 export class GetDataService {
   public searchVideo$ = new BehaviorSubject<ISearchItem[]>([]);
 
-  public showPanel$ = new BehaviorSubject<boolean>(true);
-
   constructor(private http: HttpClient) {}
 
   public getVideos(value?: string): Observable<ISearchResponse> {
@@ -29,9 +27,5 @@ export class GetDataService {
     return this.http.get<IStatisticsResponse>(
       `videos?part=statistics&id=${id}`
     );
-  }
-
-  public showSortPanel(value: boolean): void {
-    this.showPanel$.next(value);
   }
 }
