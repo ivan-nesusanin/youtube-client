@@ -10,16 +10,13 @@
     <app-settings-button></app-settings-button>
   </div>
   <div class="user-block">
-    <p *ngIf="isAuth">{{ name }}</p>
-    <p *ngIf="!isAuth">Your Name</p>
+    <p *ngIf="isAuth; else yourName">{{ name }}</p>
+    <ng-template #yourName>
+      <p>Your Name</p>
+    </ng-template>
     <a href=""></a>
     <mat-icon class="icon">account_circle</mat-icon>
-    <button
-      mat-raised-button
-      type="button"
-      (click)="goToRegister()"
-      *ngIf="isAuth"
-    >
+    <button mat-raised-button type="button" (click)="logout()" *ngIf="isAuth">
       Logout
     </button>
   </div>

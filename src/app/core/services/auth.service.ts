@@ -16,5 +16,9 @@ export class AuthService {
     this.isAuth$.next(isAuth);
   }
 
-  logout() {}
+  logout(isAuth: boolean): void {
+    localStorage.removeItem('login');
+    localStorage.removeItem('isAuth');
+    this.isAuth$.next(isAuth);
+  }
 }

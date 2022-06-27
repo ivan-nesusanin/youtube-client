@@ -23,17 +23,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('login') !== null) {
+    if (localStorage.getItem('login')) {
       this.name = localStorage.getItem('login');
       this.isAuth = Boolean(localStorage.getItem('isAuth'));
     }
   }
 
-  goToRegister(): void {
-    localStorage.removeItem('login');
-    localStorage.removeItem('isAuth');
+  logout() {
+    this.authService.logout(false);
     this.router.navigate(['/auth']);
-    this.isAuth = false;
   }
 
   ngOnDestroy(): void {
