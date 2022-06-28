@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ISearchItem, IStatisticsItem } from '../../models/search-item.model';
+import { Subscription } from 'rxjs';
+import { ISearchItem } from '../../models/search-item.model';
 import { GetDataService } from '../../services/get-data.service';
 
 @Component({
@@ -8,27 +9,27 @@ import { GetDataService } from '../../services/get-data.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent implements OnInit {
-
+export class DetailsComponent implements OnInit, OnDestroy {
   public card?: ISearchItem;
-
-  public cards!: ISearchItem[];
-
-  public stat!: IStatisticsItem;
 
   public id = '';
 
+  public sub!: Subscription;
+
   constructor(
     private getDataService: GetDataService,
-    private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
-    this.cards = this.getDataService.searchVideo;
-
-    this.card = this.cards.find(elem => elem.id.videoId === this.id);
+    this.sub = this.getDataService.searchVideo$.subscribe(
+      (res) => (this.card = res.find((elem) => elem.id.videoId === this.id))
+    );
   }
 
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 }

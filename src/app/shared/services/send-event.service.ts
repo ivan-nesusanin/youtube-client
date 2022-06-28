@@ -5,8 +5,13 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class SendEventService {
+  public clickSearchValue$ = new Subject<boolean>();
 
   public clickSettingsValue$ = new Subject<boolean>();
+
+  changeSearchClickValue(value: boolean): void {
+    this.clickSearchValue$.next(value);
+  }
 
   changeSettingsClickValue(value: boolean): void {
     this.clickSettingsValue$.next(value);

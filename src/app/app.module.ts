@@ -9,9 +9,7 @@ import { AppComponent } from './app.component';
 import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,4 +21,4 @@ import { YoutubeModule } from './youtube/youtube.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-
   public login$ = new BehaviorSubject<string>('Your Name');
 
   public isAuth$ = new BehaviorSubject<boolean>(false);
@@ -17,4 +16,9 @@ export class AuthService {
     this.isAuth$.next(isAuth);
   }
 
+  logout(isAuth: boolean): void {
+    localStorage.removeItem('login');
+    localStorage.removeItem('isAuth');
+    this.isAuth$.next(isAuth);
+  }
 }

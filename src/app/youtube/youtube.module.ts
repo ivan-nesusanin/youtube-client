@@ -36,11 +36,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MainComponent,
     ColorLabelComponent,
   ],
-  imports: [
-    RouterModule,
-    SharedModule,
-    YoutubeRoutingModule,
-  ],
+  imports: [RouterModule, SharedModule, YoutubeRoutingModule],
   providers: [INTERCEPTOR_PROVIDER],
 })
-export class YoutubeModule { }
+export class YoutubeModule {}
