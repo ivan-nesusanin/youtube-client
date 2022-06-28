@@ -2,18 +2,22 @@
   <div></div>
   <div class="search-block">
     <div class="logo">
-      <img src="../../assets/svg/logo.svg" alt="logo">
+      <img src="../../assets/svg/logo.svg" alt="logo" />
     </div>
 
     <app-search-input></app-search-input>
 
     <app-settings-button></app-settings-button>
-
   </div>
   <div class="user-block">
-    <p>{{ name }}</p>
+    <p *ngIf="isAuth; else yourName">{{ name }}</p>
+    <ng-template #yourName>
+      <p>Your Name</p>
+    </ng-template>
     <a href=""></a>
     <mat-icon class="icon">account_circle</mat-icon>
-    <button mat-raised-button type="button" (click)="goToRegister()">{{ buttonName }}</button>
+    <button mat-raised-button type="button" (click)="logout()" *ngIf="isAuth">
+      Logout
+    </button>
   </div>
 </div>

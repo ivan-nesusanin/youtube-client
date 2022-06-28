@@ -1,34 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@data/app/auth/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  public name = 'Your Name';
+export class HeaderComponent implements OnInit, OnDestroy {
+  public name!: string | null;
 
-  public buttonName = 'Login';
+  public isAuth = false;
+
+  public subLogin = this.authService.login$.subscribe(
+    (value) => (this.name = value)
+  );
+
+  public subIsAuth = this.authService.isAuth$.subscribe(
+    (value) => (this.isAuth = value)
+  );
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.login$.subscribe(value => {
-      this.name = value;
-      this.buttonName = 'Logout';
-    });
+    if (localStorage.getItem('login')) {
+      this.name = localStorage.getItem('login');
+      this.isAuth = Boolean(localStorage.getItem('isAuth'));
+    }
   }
 
-  goToRegister(): void {
-    if (this.buttonName === 'Login') {
-      this.router.navigate(['/auth']);
-    } else {
-      localStorage.clear();
-      this.router.navigate(['/auth']);
-      this.buttonName = 'Login';
-      this.name = 'Your Name';
-    }
+  logout() {
+    this.authService.logout(false);
+    this.router.navigate(['/auth']);
+  }
+
+  ngOnDestroy(): void {
+    this.subLogin?.unsubscribe();
+    this.subIsAuth?.unsubscribe();
   }
 }

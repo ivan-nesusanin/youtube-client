@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SendEventService } from '@data/app/shared/services/send-event.service';
+import { ShowSortPanelService } from '../../services/show-sort-panel.service';
 
 @Component({
   selector: 'app-settings-button',
@@ -7,9 +7,11 @@ import { SendEventService } from '@data/app/shared/services/send-event.service';
   styleUrls: ['./settings-button.component.scss'],
 })
 export class SettingsButtonComponent {
+  public showPanel = true;
 
-  constructor(public sendEventService: SendEventService) { }
+  constructor(private showSortPanel: ShowSortPanelService) {}
 
-  public showSortBlock = true;
-
+  public changeShowPanel(): void {
+    this.showSortPanel.showSortPanel((this.showPanel = !this.showPanel));
+  }
 }

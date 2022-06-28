@@ -6,27 +6,33 @@ import { DetailsComponent } from './youtube/pages/details/details.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'main', pathMatch: 'full',
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full',
   },
   {
     path: 'main',
-    canLoad: [AuthGuard],
-    loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule),
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'detail/:id', component: DetailsComponent,
+    path: 'detail/:id',
+    canActivate: [AuthGuard],
+    component: DetailsComponent,
   },
   {
-    path: '**', component: NotFoundPageComponent,
+    path: '**',
+    component: NotFoundPageComponent,
   },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
