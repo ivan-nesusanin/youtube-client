@@ -1,10 +1,16 @@
 <section class="wrapper">
-  <form class="form" [formGroup]="form" (submit) = "submitForm()">
+  <form class="form" [formGroup]="form" (submit)="submitForm()">
     <h2>Login</h2>
     <mat-form-field appearance="fill">
       <mat-hint align="end">login *</mat-hint>
-      <input type="email" matInput placeholder="Enter your email" formControlName="login" autocomplete="off">
-      <mat-error *ngIf="form.get('login')?.hasError('email') && !form.get('login')?.hasError('required')">
+      <input
+        type="email"
+        matInput
+        placeholder="Enter your email"
+        formControlName="login"
+        autocomplete="off"
+      />
+      <mat-error *ngIf="form.get('login')?.hasError('email')">
         The login email is invalid
       </mat-error>
       <mat-error *ngIf="form.get('login')?.hasError('required')">
@@ -14,26 +20,63 @@
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">password *</mat-hint>
-      <input [type]="hide ? 'password' : 'text'" matInput placeholder="Enter your password" formControlName="password" autocomplete="off">
-      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button> -->
-      <mat-error *ngIf="form.get('password')?.hasError('pattern')">
+      <input
+        type="text"
+        matInput
+        placeholder="Enter your password"
+        formControlName="password"
+        autocomplete="off"
+      />
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('pattern') &&
+          form.get('password')?.touched
+        "
+      >
         Your password isn't strong enough:
       </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('minlength') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
         * the password must contain at least 8 characters
       </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('isValidRegister') && !form.get('password')?.hasError('required')">
-        * a mixture of both uppercase and lowercase letters
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidRegister') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * a mixture of both uppercase and lowercase latin letters
       </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('isValidNumber') && !form.get('password')?.hasError('required')">
-        * a mixture of letters and numbers
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidNumber') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * a mixture of latin letters and numbers
       </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('isValidSymbol') && !form.get('password')?.hasError('required')">
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidSymbol') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
         * inclusion of at least one special character, e.g., ! @ # ? ]
       </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('required')">
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
         Please enter a password
       </mat-error>
     </mat-form-field>

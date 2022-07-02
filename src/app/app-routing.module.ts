@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './auth/pages/admin/admin.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 import { DetailsComponent } from './youtube/pages/details/details.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'detail/:id',
     canActivate: [AuthGuard],
     component: DetailsComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
   },
   {
     path: '**',

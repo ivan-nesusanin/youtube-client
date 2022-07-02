@@ -3,7 +3,13 @@
     <h2>Create new card</h2>
     <mat-form-field appearance="fill">
       <mat-hint align="end">title *</mat-hint>
-      <input type="text" matInput formControlName="title" placeholder="Enter a title" autocomplete="off">
+      <input
+        type="text"
+        matInput
+        formControlName="title"
+        placeholder="Enter a title"
+        autocomplete="off"
+      />
       <mat-error *ngIf="adminForm.get('title')?.hasError('required')">
         Please enter a title
       </mat-error>
@@ -17,7 +23,13 @@
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">description</mat-hint>
-      <input type="text" matInput formControlName="description" placeholder="Enter a description" autocomplete="off">
+      <input
+        type="text"
+        matInput
+        formControlName="description"
+        placeholder="Enter a description"
+        autocomplete="off"
+      />
       <mat-error *ngIf="adminForm.get('title')?.hasError('maxlength')">
         The description is too long
       </mat-error>
@@ -25,7 +37,13 @@
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">link to the image cover *</mat-hint>
-      <input type="text" matInput formControlName="image" placeholder="Enter a link" autocomplete="off">
+      <input
+        type="text"
+        matInput
+        formControlName="image"
+        placeholder="Enter a link"
+        autocomplete="off"
+      />
       <mat-error *ngIf="adminForm.get('image')?.hasError('required')">
         Please enter a link to the image
       </mat-error>
@@ -36,7 +54,13 @@
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">link to the video *</mat-hint>
-      <input type="text" matInput formControlName="video" placeholder="Enter a link" autocomplete="off">
+      <input
+        type="text"
+        matInput
+        formControlName="video"
+        placeholder="Enter a link"
+        autocomplete="off"
+      />
       <mat-error *ngIf="adminForm.get('video')?.hasError('required')">
         Please enter a link to the video
       </mat-error>
@@ -47,7 +71,13 @@
 
     <mat-form-field appearance="fill">
       <mat-hint align="end">creation date *</mat-hint>
-      <input type="text" matInput formControlName="date" placeholder="Input format: Year / Month / Day" autocomplete="off">
+      <input
+        type="text"
+        matInput
+        formControlName="date"
+        placeholder="Input format: Year / Month / Day"
+        autocomplete="off"
+      />
       <mat-error *ngIf="adminForm.get('date')?.hasError('required')">
         Please enter a creation date
       </mat-error>
@@ -55,6 +85,13 @@
         The date is invalid
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="adminForm.invalid">Login</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="adminForm.invalid"
+    >
+      Login
+    </button>
   </form>
 </section>

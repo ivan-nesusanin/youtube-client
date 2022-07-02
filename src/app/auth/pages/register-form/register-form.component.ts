@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@data/app/core/services/auth.service';
 
@@ -9,22 +14,19 @@ import { AuthService } from '@data/app/core/services/auth.service';
   styleUrls: ['./register-form.component.scss'],
 })
 export class RegisterFormComponent implements OnInit {
-  public hide = true;
-
   public form!: FormGroup;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      login: new FormControl(null, [
-        Validators.required,
-        Validators.email,
-      ]),
+      login: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(8),
-        Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}/),
+        Validators.pattern(
+          /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}/
+        ),
         this.validatorOfRegister,
         this.validatorOfNumber,
         this.validatorOfSymbol,
@@ -37,7 +39,9 @@ export class RegisterFormComponent implements OnInit {
     this.router.navigate(['/main']);
   }
 
-  validatorOfRegister(control: AbstractControl): { [key: string]: boolean } | null {
+  validatorOfRegister(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
     const regExp = /(?=.*[a-z])(?=.*[A-Z])/;
     if (!regExp.test(control.value)) {
       return { isValidRegister: true };
@@ -45,7 +49,9 @@ export class RegisterFormComponent implements OnInit {
     return null;
   }
 
-  validatorOfNumber(control: AbstractControl): { [key: string]: boolean } | null {
+  validatorOfNumber(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
     const regExp = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
     if (!regExp.test(control.value)) {
       return { isValidNumber: true };
@@ -53,7 +59,9 @@ export class RegisterFormComponent implements OnInit {
     return null;
   }
 
-  validatorOfSymbol(control: AbstractControl): { [key: string]: boolean } | null {
+  validatorOfSymbol(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
     const regExp = /(?=.*[$@$!%*?&])/;
     if (!regExp.test(control.value)) {
       return { isValidSymbol: true };

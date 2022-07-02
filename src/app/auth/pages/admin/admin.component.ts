@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
   public adminForm!: FormGroup;
+
+  public reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
   constructor(private router: Router) {}
 
@@ -22,25 +29,21 @@ export class AdminComponent implements OnInit {
       description: new FormControl(null, Validators.maxLength(255)),
       image: new FormControl(null, [
         Validators.required,
-        Validators.pattern('(https?://)?([\da-z.-]+)\.([a-z.]{2,6})[/\w .-]*/?'),
+        Validators.pattern(this.reg),
       ]),
       video: new FormControl(null, [
         Validators.required,
-        Validators.pattern('(https?://)?([\da-z.-]+)\.([a-z.]{2,6})[/\w .-]*/?'),
+        Validators.pattern(this.reg),
       ]),
-      date: new FormControl(null, [
-        Validators.required,
-        this.validatorOfDate,
-      ]),
+      date: new FormControl(null, [Validators.required, this.validatorOfDate]),
     });
   }
 
   validatorOfDate(control: AbstractControl): { [key: string]: boolean } | null {
-    const enteredDate = +(new Date(control.value));
+    const enteredDate = +new Date(control.value);
     if (Date.now() < enteredDate) {
       return { isValidDate: true };
     }
     return null;
   }
-
 }
