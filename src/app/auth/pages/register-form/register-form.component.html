@@ -1,29 +1,83 @@
 <section class="wrapper">
-  <form class="form" [formGroup]="form" (submit)="submit()">
+  <form class="form" [formGroup]="form" (submit)="submitForm()">
     <h2>Login</h2>
     <mat-form-field appearance="fill">
-      <mat-hint align="end">login</mat-hint>
+      <mat-hint align="end">login *</mat-hint>
       <input
+        type="email"
         matInput
-        placeholder="enter login*"
+        placeholder="Enter your email"
         formControlName="login"
         autocomplete="off"
       />
-      <mat-error> You must enter a login </mat-error>
+      <mat-error *ngIf="form.get('login')?.hasError('email')">
+        The login email is invalid
+      </mat-error>
+      <mat-error *ngIf="form.get('login')?.hasError('required')">
+        Please enter a login email
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-hint align="end">password</mat-hint>
+      <mat-hint align="end">password *</mat-hint>
       <input
         type="password"
         matInput
-        placeholder="enter password*"
+        placeholder="Enter your password"
         formControlName="password"
+        autocomplete="off"
       />
-      <mat-error>
-        You must enter a password
-        <br />
-        The password must contain at least 8 characters
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('pattern') &&
+          form.get('password')?.touched
+        "
+      >
+        Your password isn't strong enough:
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('minlength') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * the password must contain at least 8 characters
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidRegister') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * a mixture of both uppercase and lowercase latin letters
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidNumber') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * a mixture of latin letters and numbers
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('isValidSymbol') &&
+          !form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        * inclusion of at least one special character, e.g., ! @ # ? ]
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.get('password')?.hasError('required') &&
+          form.get('password')?.touched
+        "
+      >
+        Please enter a password
       </mat-error>
     </mat-form-field>
     <button

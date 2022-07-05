@@ -19,9 +19,15 @@
     border-radius: 5px 0 0 5px;
   }
 
-  img {
+  a {
+    display: block;
     height: 100%;
+
+    img {
+      height: 100%;
+    }
   }
+
 }
 
 .card {
@@ -39,6 +45,13 @@
     font-size: 11px;
     line-height: 1.2;
     overflow-y: auto;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    text-decoration: none;
   }
 }
 
