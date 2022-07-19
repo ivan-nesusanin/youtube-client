@@ -1,30 +1,30 @@
-project name: Youtube-Client
+Имя проекта: [YouTube-Client](https://ytb-client.netlify.app)
 =======
-# YoutubeClient
+![Screen Main Page](https://github.com/ivan-nesusanin/rsschool-cv/blob/cv-html-css/Assets/youtube-client.JPG?raw=true)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
+## Краткое описание приложения
+Учебный проект, выполненный на Angular-stage frontend курса в RS School.
 
-## Development server
+Приложение работает в связке с YouTube API.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+При открытии отправляет на страницу с регистрацией.
 
-## Code scaffolding
+После регистрации, позволяет:
+- искать видео на YouTube;
+- сортировать по дате публикации, количеству просмотров и ключевым словам;
+- смотреть детальную информацию, переходить на сайт YouTube для просмотра;
+- создавать кастомные карточки (в разработке).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+В приложении реализованы:
+- гард защищающий от поиска без регистрации;
+- login - logout;
+- валидация форм;
+- перехват http-запросов с помощью interceptor;
+- ленивая загрузка компонентов;
+- цветовые метки карточек по дате публикации с помощюь directive;
+- сортировка с помощью pipe;
+- создание своих карточек через страницу /admin (дорабатывается).
 
-## Build
+## Технологии использованные при разработке
+- ***HTML***, ***SCSS***, ***TypeScript***, ***Angular***, ***Angular Material***, ***Rest API***, ***RxJS***
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
->>>>>>> 64a85d6 (init: start the project youtube-client)
